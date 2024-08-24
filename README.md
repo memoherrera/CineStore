@@ -25,7 +25,7 @@ iOS Application using The Movie DB API to populate content
 
     ```bash
     git clone git@github.com:memoherrera/CineStore.git
-    cd BaseSwiftUI
+    cd CineStore
     ```
 2. **Open Xcode** 
 
