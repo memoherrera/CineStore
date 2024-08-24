@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		29B4CBBC2C7A4B7A00C22C1E /* CineStoreAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4CBBB2C7A4B7A00C22C1E /* CineStoreAppApp.swift */; };
+		29B4CBBC2C7A4B7A00C22C1E /* CineStoreApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4CBBB2C7A4B7A00C22C1E /* CineStoreApp.swift */; };
 		29B4CBBE2C7A4B7A00C22C1E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4CBBD2C7A4B7A00C22C1E /* ContentView.swift */; };
 		29B4CBC02C7A4B7A00C22C1E /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4CBBF2C7A4B7A00C22C1E /* Item.swift */; };
 		29B4CBC22C7A4B7B00C22C1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29B4CBC12C7A4B7B00C22C1E /* Assets.xcassets */; };
@@ -15,6 +15,7 @@
 		29B4CBCF2C7A4B7B00C22C1E /* CineStoreAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4CBCE2C7A4B7B00C22C1E /* CineStoreAppTests.swift */; };
 		29B4CBD92C7A4B7B00C22C1E /* CineStoreAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4CBD82C7A4B7B00C22C1E /* CineStoreAppUITests.swift */; };
 		29B4CBDB2C7A4B7B00C22C1E /* CineStoreAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4CBDA2C7A4B7B00C22C1E /* CineStoreAppUITestsLaunchTests.swift */; };
+		29B4CBE92C7A52E300C22C1E /* LinkNavigator in Frameworks */ = {isa = PBXBuildFile; productRef = 29B4CBE82C7A52E300C22C1E /* LinkNavigator */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +37,7 @@
 
 /* Begin PBXFileReference section */
 		29B4CBB82C7A4B7A00C22C1E /* CineStoreApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CineStoreApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		29B4CBBB2C7A4B7A00C22C1E /* CineStoreAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CineStoreAppApp.swift; sourceTree = "<group>"; };
+		29B4CBBB2C7A4B7A00C22C1E /* CineStoreApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CineStoreApp.swift; sourceTree = "<group>"; };
 		29B4CBBD2C7A4B7A00C22C1E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		29B4CBBF2C7A4B7A00C22C1E /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		29B4CBC12C7A4B7B00C22C1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -53,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29B4CBE92C7A52E300C22C1E /* LinkNavigator in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,7 +98,10 @@
 		29B4CBBA2C7A4B7A00C22C1E /* CineStoreApp */ = {
 			isa = PBXGroup;
 			children = (
-				29B4CBBB2C7A4B7A00C22C1E /* CineStoreAppApp.swift */,
+				29B4CBEC2C7A590A00C22C1E /* Data */,
+				29B4CBEB2C7A590200C22C1E /* Domain */,
+				29B4CBEA2C7A58FA00C22C1E /* Presentation */,
+				29B4CBBB2C7A4B7A00C22C1E /* CineStoreApp.swift */,
 				29B4CBBD2C7A4B7A00C22C1E /* ContentView.swift */,
 				29B4CBBF2C7A4B7A00C22C1E /* Item.swift */,
 				29B4CBC12C7A4B7B00C22C1E /* Assets.xcassets */,
@@ -130,6 +135,27 @@
 			path = CineStoreAppUITests;
 			sourceTree = "<group>";
 		};
+		29B4CBEA2C7A58FA00C22C1E /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		29B4CBEB2C7A590200C22C1E /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		29B4CBEC2C7A590A00C22C1E /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -146,6 +172,9 @@
 			dependencies = (
 			);
 			name = CineStoreApp;
+			packageProductDependencies = (
+				29B4CBE82C7A52E300C22C1E /* LinkNavigator */,
+			);
 			productName = CineStoreApp;
 			productReference = 29B4CBB82C7A4B7A00C22C1E /* CineStoreApp.app */;
 			productType = "com.apple.product-type.application";
@@ -218,6 +247,9 @@
 				Base,
 			);
 			mainGroup = 29B4CBAF2C7A4B7A00C22C1E;
+			packageReferences = (
+				29B4CBE72C7A52E300C22C1E /* XCRemoteSwiftPackageReference "LinkNavigator" */,
+			);
 			productRefGroup = 29B4CBB92C7A4B7A00C22C1E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -262,7 +294,7 @@
 			files = (
 				29B4CBBE2C7A4B7A00C22C1E /* ContentView.swift in Sources */,
 				29B4CBC02C7A4B7A00C22C1E /* Item.swift in Sources */,
-				29B4CBBC2C7A4B7A00C22C1E /* CineStoreAppApp.swift in Sources */,
+				29B4CBBC2C7A4B7A00C22C1E /* CineStoreApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -592,6 +624,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		29B4CBE72C7A52E300C22C1E /* XCRemoteSwiftPackageReference "LinkNavigator" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/interactord/LinkNavigator.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.6;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		29B4CBE82C7A52E300C22C1E /* LinkNavigator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 29B4CBE72C7A52E300C22C1E /* XCRemoteSwiftPackageReference "LinkNavigator" */;
+			productName = LinkNavigator;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 29B4CBB02C7A4B7A00C22C1E /* Project object */;
 }
