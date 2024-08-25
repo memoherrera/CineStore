@@ -31,6 +31,13 @@
 		29B4CC182C7A9AC700C22C1E /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4CC172C7A9AC700C22C1E /* ActivityIndicator.swift */; };
 		29B4CC1C2C7AA36F00C22C1E /* UIAppearanceManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4CC1B2C7AA36F00C22C1E /* UIAppearanceManagerTests.swift */; };
 		29B4CC1F2C7AA60A00C22C1E /* NavigationComponentMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4CC1E2C7AA60A00C22C1E /* NavigationComponentMock.swift */; };
+		29B4CC232C7B90B500C22C1E /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4CC222C7B90B500C22C1E /* Movie.swift */; };
+		29B4CC282C7B918B00C22C1E /* GlobalConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4CC272C7B918B00C22C1E /* GlobalConfig.swift */; };
+		29B4CC302C7BA10200C22C1E /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4CC2F2C7BA10200C22C1E /* APIClient.swift */; };
+		29B4CC322C7BA11900C22C1E /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4CC312C7BA11900C22C1E /* APIError.swift */; };
+		29B4CC342C7BA27E00C22C1E /* MockUrlProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4CC332C7BA27E00C22C1E /* MockUrlProtocol.swift */; };
+		29B4CC362C7BA88800C22C1E /* APIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4CC352C7BA88800C22C1E /* APIClientTests.swift */; };
+		29B4CC392C7BAC0D00C22C1E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 29B4CC382C7BAC0D00C22C1E /* Alamofire */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +83,12 @@
 		29B4CC172C7A9AC700C22C1E /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		29B4CC1B2C7AA36F00C22C1E /* UIAppearanceManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAppearanceManagerTests.swift; sourceTree = "<group>"; };
 		29B4CC1E2C7AA60A00C22C1E /* NavigationComponentMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationComponentMock.swift; sourceTree = "<group>"; };
+		29B4CC222C7B90B500C22C1E /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		29B4CC272C7B918B00C22C1E /* GlobalConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConfig.swift; sourceTree = "<group>"; };
+		29B4CC2F2C7BA10200C22C1E /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		29B4CC312C7BA11900C22C1E /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		29B4CC332C7BA27E00C22C1E /* MockUrlProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUrlProtocol.swift; sourceTree = "<group>"; };
+		29B4CC352C7BA88800C22C1E /* APIClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29B4CC392C7BAC0D00C22C1E /* Alamofire in Frameworks */,
 				29B4CBE92C7A52E300C22C1E /* LinkNavigator in Frameworks */,
 				29B4CC112C7A94C100C22C1E /* Then in Frameworks */,
 			);
@@ -128,6 +142,7 @@
 		29B4CBBA2C7A4B7A00C22C1E /* CineStoreApp */ = {
 			isa = PBXGroup;
 			children = (
+				29B4CC242C7B90E900C22C1E /* Configuration */,
 				29B4CBEC2C7A590A00C22C1E /* Data */,
 				29B4CBEB2C7A590200C22C1E /* Domain */,
 				29B4CBEA2C7A58FA00C22C1E /* Presentation */,
@@ -149,6 +164,7 @@
 		29B4CBCD2C7A4B7B00C22C1E /* CineStoreAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				29B4CC292C7BA06A00C22C1E /* Networking */,
 				29B4CC1A2C7AA35100C22C1E /* Common */,
 			);
 			path = CineStoreAppTests;
@@ -185,6 +201,7 @@
 		29B4CBEC2C7A590A00C22C1E /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				29B4CC202C7B894A00C22C1E /* DataSource */,
 				29B4CC012C7A6A5000C22C1E /* Entities */,
 			);
 			path = Data;
@@ -223,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				29B4CC032C7A6AFE00C22C1E /* FavoriteMovie.swift */,
+				29B4CC222C7B90B500C22C1E /* Movie.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -272,6 +290,40 @@
 			path = AppearanceManager;
 			sourceTree = "<group>";
 		};
+		29B4CC202C7B894A00C22C1E /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				29B4CC212C7B896200C22C1E /* Networking */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		29B4CC212C7B896200C22C1E /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				29B4CC2F2C7BA10200C22C1E /* APIClient.swift */,
+				29B4CC312C7BA11900C22C1E /* APIError.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		29B4CC242C7B90E900C22C1E /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				29B4CC272C7B918B00C22C1E /* GlobalConfig.swift */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		29B4CC292C7BA06A00C22C1E /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				29B4CC332C7BA27E00C22C1E /* MockUrlProtocol.swift */,
+				29B4CC352C7BA88800C22C1E /* APIClientTests.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -291,6 +343,7 @@
 			packageProductDependencies = (
 				29B4CBE82C7A52E300C22C1E /* LinkNavigator */,
 				29B4CC102C7A94C100C22C1E /* Then */,
+				29B4CC382C7BAC0D00C22C1E /* Alamofire */,
 			);
 			productName = CineStoreApp;
 			productReference = 29B4CBB82C7A4B7A00C22C1E /* CineStoreApp.app */;
@@ -367,6 +420,7 @@
 			packageReferences = (
 				29B4CBE72C7A52E300C22C1E /* XCRemoteSwiftPackageReference "LinkNavigator" */,
 				29B4CC0F2C7A94C100C22C1E /* XCRemoteSwiftPackageReference "Then" */,
+				29B4CC372C7BAC0D00C22C1E /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 29B4CBB92C7A4B7A00C22C1E /* Products */;
 			projectDirPath = "";
@@ -412,20 +466,24 @@
 			files = (
 				29B4CBFC2C7A5DB900C22C1E /* MainRouteGroup.swift in Sources */,
 				29B4CC072C7A6C5B00C22C1E /* TopRatedMoviesScreen.swift in Sources */,
+				29B4CC282C7B918B00C22C1E /* GlobalConfig.swift in Sources */,
 				29B4CC092C7A6C7400C22C1E /* NowPlayingMoviesScreen.swift in Sources */,
 				29B4CBF72C7A5C7100C22C1E /* NavigatorDependency.swift in Sources */,
 				29B4CC0B2C7A6C8800C22C1E /* FavoriteMoviesScreen.swift in Sources */,
+				29B4CC302C7BA10200C22C1E /* APIClient.swift in Sources */,
 				29B4CBFE2C7A5E2E00C22C1E /* MainRouteBuilders.swift in Sources */,
 				29B4CC042C7A6AFE00C22C1E /* FavoriteMovie.swift in Sources */,
 				29B4CBF92C7A5CC600C22C1E /* AppRoutes.swift in Sources */,
 				29B4CC162C7A9A6900C22C1E /* LoadingView.swift in Sources */,
 				29B4CBF42C7A5C0200C22C1E /* MainRouteView.swift in Sources */,
 				29B4CC142C7A9A3000C22C1E /* BaseContentView.swift in Sources */,
+				29B4CC322C7BA11900C22C1E /* APIError.swift in Sources */,
 				29B4CC002C7A5E7100C22C1E /* TabBarItemType.swift in Sources */,
 				29B4CC182C7A9AC700C22C1E /* ActivityIndicator.swift in Sources */,
 				29B4CBF02C7A5B5B00C22C1E /* MainScene.swift in Sources */,
 				29B4CBBC2C7A4B7A00C22C1E /* CineStoreApp.swift in Sources */,
 				29B4CC0E2C7A925600C22C1E /* UIAppearanceManager.swift in Sources */,
+				29B4CC232C7B90B500C22C1E /* Movie.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,8 +491,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29B4CC342C7BA27E00C22C1E /* MockUrlProtocol.swift in Sources */,
 				29B4CC1C2C7AA36F00C22C1E /* UIAppearanceManagerTests.swift in Sources */,
 				29B4CC1F2C7AA60A00C22C1E /* NavigationComponentMock.swift in Sources */,
+				29B4CC362C7BA88800C22C1E /* APIClientTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -774,6 +834,14 @@
 				minimumVersion = 3.0.0;
 			};
 		};
+		29B4CC372C7BAC0D00C22C1E /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -786,6 +854,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 29B4CC0F2C7A94C100C22C1E /* XCRemoteSwiftPackageReference "Then" */;
 			productName = Then;
+		};
+		29B4CC382C7BAC0D00C22C1E /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 29B4CC372C7BAC0D00C22C1E /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
