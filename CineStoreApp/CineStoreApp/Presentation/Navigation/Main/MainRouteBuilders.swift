@@ -14,7 +14,7 @@ struct TopRatedScreenBuilder<RootNavigator: MainRootNavigatorType> {
         var matchPath: String { AppRoutes.topRated.rawValue }
         return .init(matchPath: matchPath) { navigator, _, _ -> RouteViewController? in
             return WrappingController(matchPath: matchPath, title: "Top Rated") {
-                
+                TopRatedMoviesScreen()
             }
         }
     }
@@ -26,7 +26,7 @@ struct NowPlayingScreenBuilder<RootNavigator: MainRootNavigatorType> {
         var matchPath: String { AppRoutes.nowPlaying.rawValue }
         return .init(matchPath: matchPath) { navigator, _, _ -> RouteViewController? in
             return WrappingController(matchPath: matchPath, title: "Now Playing") {
-                
+                NowPlayingMoviesScreen()
             }
         }
     }
@@ -38,7 +38,7 @@ struct FavoritesScreenBuilder<RootNavigator: MainRootNavigatorType> {
         var matchPath: String { AppRoutes.favorites.rawValue }
         return .init(matchPath: matchPath) { navigator, _, _ -> RouteViewController? in
             return WrappingController(matchPath: matchPath, title: "Favorites") {
-                
+                FavoriteMoviesScreen()
             }
         }
     }

@@ -1,5 +1,5 @@
 //
-//  FavoriteMoviesScreen.swift
+//  TopRatedMoviesScreens.swift
 //  CineStoreApp
 //
 //  Created by Guillermo Herrera on 24/08/24.
@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct FavoriteMoviesScreen: View {
+struct TopRatedMoviesScreen: View {
     @State var isLoading: Bool = false
     var body: some View {
-        BaseContentView(isLoading: $isLoading, title: "Favorites") {
+        BaseContentView(isLoading: $isLoading, title: "Top Rated") {
             ScrollView(showsIndicators: false) {
                 
             }

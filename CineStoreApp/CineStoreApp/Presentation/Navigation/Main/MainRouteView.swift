@@ -40,6 +40,6 @@ struct MainRouteView: View {
             isHiddenDefaultTabbar: false,
             tabItemList: tabItems,
             isAnimatedForUpdateTabbar: false
-        )
+        ).background(Color(UIColor.backgroundPrimary))
     }
 }

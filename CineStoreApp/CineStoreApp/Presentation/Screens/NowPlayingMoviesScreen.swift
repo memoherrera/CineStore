@@ -8,7 +8,12 @@
 import SwiftUI
 
 struct NowPlayingMoviesScreen: View {
+    @State var isLoading: Bool = false
     var body: some View {
-        Text("Now Playing Moviews")
+        BaseContentView(isLoading: $isLoading, title: "Now Playing") {
+            ScrollView(showsIndicators: false) {
+                
+            }
+        }
     }
 }
