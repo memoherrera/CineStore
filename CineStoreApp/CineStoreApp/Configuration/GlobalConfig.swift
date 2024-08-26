@@ -12,12 +12,12 @@ enum GlobalConfig {
         
         //TODO: Secure this
         static var apiKey: String {
-            return "e361bdcec86ac8696754bb58b56ab9af"
+            return "9bb99f7357dc8b3e3730dee5741dab4f"
         }
         
         //TODO: Secure this
         static var accessToken: String {
-            return "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlMzYxYmRjZWM4NmFjODY5Njc1NGJiNThiNTZhYjlhZiIsIm5iZiI6MTcyNDYwMDY2NS42MDQ0NDksInN1YiI6IjYxZTQ1YzNkMTYyYmMzMDA2NzgxNGVlZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ibPGKpeNBk_vg8xx8rgyjb-7STU15qR69ob9XRCLOr0"
+            return "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5YmI5OWY3MzU3ZGM4YjNlMzczMGRlZTU3NDFkYWI0ZiIsIm5iZiI6MTcyNDY0NDI1MC44MzA4NzMsInN1YiI6IjYxZTQ1YzNkMTYyYmMzMDA2NzgxNGVlZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.4YxoQ6846yUurCvP1b7V_TzgsZmW-FYFrFhiKD3v5zc"
         }
 
         static var imageUrl: String {

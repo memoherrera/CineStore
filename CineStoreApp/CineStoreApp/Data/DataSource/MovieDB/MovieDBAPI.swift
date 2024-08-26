@@ -16,8 +16,9 @@ class MovieDBAPI: MovieDBAPIProtocol {
     
     // Helper method to construct the base URL for movie discovery
     private func constructMovieDiscoveryURL(page: Int, additionalParameters: [String: String]) -> String {
-        var components = URLComponents(string: "/discover/movie")!
+        var components = URLComponents(string: "/discover/movie?")!
         components.queryItems = [
+            URLQueryItem(name: "api_key", value: GlobalConfig.MovieDB.apiKey),
             URLQueryItem(name: "include_adult", value: "false"),
             URLQueryItem(name: "include_video", value: "false"),
             URLQueryItem(name: "language", value: "en-US"),

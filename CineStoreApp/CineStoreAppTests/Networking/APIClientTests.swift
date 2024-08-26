@@ -41,7 +41,7 @@ class APIClientTests: XCTestCase {
                 {
                     "id": 1,
                     "title": "Mock Movie",
-                    "genres": [28, 12],
+                    "genre_ids": [28, 12],
                     "overview": "This is a mock movie.",
                     "popularity": 1234.56,
                     "poster_path": "/mock.jpg",

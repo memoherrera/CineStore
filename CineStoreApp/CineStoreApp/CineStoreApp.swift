@@ -7,14 +7,17 @@
 
 import SwiftUI
 import SwiftData
+import Combine
+
 
 @main
 /// Application Entry Point
 struct CineStoreApp: App {
+    
     init() {
         UIAppearanceManager.configure()
     }
-
+    
     var body: some Scene {
         MainScene()
     }

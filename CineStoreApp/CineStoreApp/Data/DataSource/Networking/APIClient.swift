@@ -11,7 +11,7 @@ import Alamofire
 class APIClient {
     static let shared = APIClient()
     
-    private let baseURL = "\(GlobalConfig.MovieDB.apiEndPoint)/\(GlobalConfig.MovieDB.apiVersion) "
+    private let baseURL = "\(GlobalConfig.MovieDB.apiEndPoint)/\(GlobalConfig.MovieDB.apiVersion)"
     private let session: Session
     
     init(session: Session = Session.default) {
@@ -21,7 +21,7 @@ class APIClient {
     // Method to get default headers
     func defaultHeaders() -> HTTPHeaders {
         return [
-            "Authorization": GlobalConfig.MovieDB.accessToken,
+            "accept": "application/json",
         ]
     }
     
@@ -33,6 +33,7 @@ class APIClient {
         guard let url = URL(string: baseURL + endpoint) else {
             throw APIError.invalidURL
         }
+        print("URL: \(url)")
         // Use default headers if none are provided
         let headers = customHeaders ?? defaultHeaders()
         

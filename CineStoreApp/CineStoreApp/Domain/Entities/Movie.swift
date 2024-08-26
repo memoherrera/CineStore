@@ -50,10 +50,11 @@ extension Movie: Then, Equatable {
 
 extension Movie: Decodable {
     private enum CodingKeys: String, CodingKey {
-        case id, title, overview, popularity, genres
+        case id, title, overview, popularity
         case posterPath = "poster_path"
         case voteAverage = "vote_average"
         case releaseDate = "release_date"
+        case genres = "genre_ids"
     }
 }
 

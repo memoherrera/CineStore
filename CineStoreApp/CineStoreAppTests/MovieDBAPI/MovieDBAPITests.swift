@@ -9,7 +9,7 @@ import XCTest
 import Alamofire
 @testable import CineStoreApp
 
-class MovieViewModelTests: XCTestCase {
+class MovieDBAPITests: XCTestCase {
     
     var api: MovieDBAPI!
     var mockSession: Session!
@@ -43,7 +43,7 @@ class MovieViewModelTests: XCTestCase {
                 {
                     "id": 1,
                     "title": "Mock Movie",
-                    "genres": [28, 12],
+                    "genre_ids": [28, 12],
                     "overview": "This is a mock movie.",
                     "popularity": 1234.56,
                     "poster_path": "/mock.jpg",
@@ -62,7 +62,7 @@ class MovieViewModelTests: XCTestCase {
             let response = HTTPURLResponse(url: URL(string: "https://api.themoviedb.org/3")!,
                                            statusCode: 200,
                                            httpVersion: nil,
-                                           headerFields: nil)!
+                                           headerFields: ["Content-Type": "application/json"])!
             return (response, jsonData)
         }
         
@@ -92,7 +92,7 @@ class MovieViewModelTests: XCTestCase {
                 {
                     "id": 2,
                     "title": "Now Playing Mock Movie",
-                    "genres": [16, 35],
+                    "genre_ids": [16, 35],
                     "overview": "This is a now playing mock movie.",
                     "popularity": 987.65,
                     "poster_path": "/nowplayingmock.jpg",
@@ -110,7 +110,7 @@ class MovieViewModelTests: XCTestCase {
             let response = HTTPURLResponse(url: URL(string: "https://api.themoviedb.org/3")!,
                                            statusCode: 200,
                                            httpVersion: nil,
-                                           headerFields: nil)!
+                                           headerFields: ["Content-Type": "application/json"])!
             return (response, jsonData)
         }
         
@@ -136,7 +136,7 @@ class MovieViewModelTests: XCTestCase {
         {
             "id": 3,
             "title": "Mock Movie Details",
-            "genres": [18, 80],
+            "genre_ids": [18, 80],
             "overview": "This is mock movie details.",
             "popularity": 456.78,
             "poster_path": "/mockdetails.jpg",
@@ -150,7 +150,7 @@ class MovieViewModelTests: XCTestCase {
             let response = HTTPURLResponse(url: URL(string: "https://api.themoviedb.org/3")!,
                                            statusCode: 200,
                                            httpVersion: nil,
-                                           headerFields: nil)!
+                                           headerFields: ["Content-Type": "application/json"])!
             return (response, jsonData)
         }
         

@@ -9,29 +9,43 @@ import Foundation
 @testable import CineStoreApp
 
 class MockMovieDBAPI: MovieDBAPIProtocol {
-    var topRatedMoviesResponse: MovieResponse?
-    var nowPlayingMoviesResponse: MovieResponse?
-    var movieDetailsResponse: Movie?
-    var shouldThrowError = false
+    var topRatedMoviesResult: Result<MovieResponse, Error>?
+    var nowPlayingMoviesResult: Result<MovieResponse, Error>?
+    var movieDetailResult: Result<Movie, Error>?
     
     func fetchTopRatedMovies(page: Int) async throws -> MovieResponse {
-        if shouldThrowError {
-            throw NSError(domain: "", code: 1, userInfo: nil)
+        if let result = topRatedMoviesResult {
+            switch result {
+            case .success(let response):
+                return response
+            case .failure(let error):
+                throw error
+            }
         }
-        return topRatedMoviesResponse ?? MovieResponse(page: 1, results: [], totalPages: 1, totalResults: 1)
+        throw MovieRepositoryError.unknown
     }
     
     func fetchNowPlayingMovies(minDate: String, maxDate: String, page: Int) async throws -> MovieResponse {
-        if shouldThrowError {
-            throw NSError(domain: "", code: 1, userInfo: nil)
+        if let result = nowPlayingMoviesResult {
+            switch result {
+            case .success(let response):
+                return response
+            case .failure(let error):
+                throw error
+            }
         }
-        return nowPlayingMoviesResponse ?? MovieResponse(page: 1, results: [], totalPages: 1, totalResults: 1)
+        throw MovieRepositoryError.unknown
     }
     
     func fetchMovieDetails(movieID: Int) async throws -> Movie {
-        if shouldThrowError {
-            throw NSError(domain: "", code: 1, userInfo: nil)
+        if let result = movieDetailResult {
+            switch result {
+            case .success(let movie):
+                return movie
+            case .failure(let error):
+                throw error
+            }
         }
-        return movieDetailsResponse ?? Movie(id: movieID, title: "Mock Movie", genres: [], overview: "Overview", popularity: 0.0, posterPath: "", voteAverage: 0.0, releaseDate: "")
+        throw MovieRepositoryError.unknown
     }
 }
