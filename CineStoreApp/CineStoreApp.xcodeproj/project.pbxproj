@@ -42,6 +42,8 @@
 		29B4CC3E2C7BCE8B00C22C1E /* MovieDBAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4CC3D2C7BCE8B00C22C1E /* MovieDBAPI.swift */; };
 		29B4CC412C7BD12700C22C1E /* MockMovieDBAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4CC402C7BD12700C22C1E /* MockMovieDBAPI.swift */; };
 		29B4CC432C7BD17600C22C1E /* MovieDBAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4CC422C7BD17600C22C1E /* MovieDBAPITests.swift */; };
+		29B4CC472C7C149300C22C1E /* Publisher+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4CC462C7C149300C22C1E /* Publisher+Extension.swift */; };
+		29B4CC4A2C7C1D8400C22C1E /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = 29B4CC492C7C1D8400C22C1E /* Factory */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +99,7 @@
 		29B4CC3D2C7BCE8B00C22C1E /* MovieDBAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDBAPI.swift; sourceTree = "<group>"; };
 		29B4CC402C7BD12700C22C1E /* MockMovieDBAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMovieDBAPI.swift; sourceTree = "<group>"; };
 		29B4CC422C7BD17600C22C1E /* MovieDBAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDBAPITests.swift; sourceTree = "<group>"; };
+		29B4CC462C7C149300C22C1E /* Publisher+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +110,7 @@
 				29B4CC392C7BAC0D00C22C1E /* Alamofire in Frameworks */,
 				29B4CBE92C7A52E300C22C1E /* LinkNavigator in Frameworks */,
 				29B4CC112C7A94C100C22C1E /* Then in Frameworks */,
+				29B4CC4A2C7C1D8400C22C1E /* Factory in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,6 +154,7 @@
 		29B4CBBA2C7A4B7A00C22C1E /* CineStoreApp */ = {
 			isa = PBXGroup;
 			children = (
+				29B4CC452C7C145300C22C1E /* Extensions */,
 				29B4CC242C7B90E900C22C1E /* Configuration */,
 				29B4CBEC2C7A590A00C22C1E /* Data */,
 				29B4CBEB2C7A590200C22C1E /* Domain */,
@@ -203,6 +208,7 @@
 		29B4CBEB2C7A590200C22C1E /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				29B4CC012C7A6A5000C22C1E /* Entities */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -211,7 +217,6 @@
 			isa = PBXGroup;
 			children = (
 				29B4CC202C7B894A00C22C1E /* DataSource */,
-				29B4CC012C7A6A5000C22C1E /* Entities */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -352,6 +357,14 @@
 			path = MovieDBAPI;
 			sourceTree = "<group>";
 		};
+		29B4CC452C7C145300C22C1E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				29B4CC462C7C149300C22C1E /* Publisher+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -372,6 +385,7 @@
 				29B4CBE82C7A52E300C22C1E /* LinkNavigator */,
 				29B4CC102C7A94C100C22C1E /* Then */,
 				29B4CC382C7BAC0D00C22C1E /* Alamofire */,
+				29B4CC492C7C1D8400C22C1E /* Factory */,
 			);
 			productName = CineStoreApp;
 			productReference = 29B4CBB82C7A4B7A00C22C1E /* CineStoreApp.app */;
@@ -449,6 +463,7 @@
 				29B4CBE72C7A52E300C22C1E /* XCRemoteSwiftPackageReference "LinkNavigator" */,
 				29B4CC0F2C7A94C100C22C1E /* XCRemoteSwiftPackageReference "Then" */,
 				29B4CC372C7BAC0D00C22C1E /* XCRemoteSwiftPackageReference "Alamofire" */,
+				29B4CC482C7C1D8400C22C1E /* XCRemoteSwiftPackageReference "Factory" */,
 			);
 			productRefGroup = 29B4CBB92C7A4B7A00C22C1E /* Products */;
 			projectDirPath = "";
@@ -508,6 +523,7 @@
 				29B4CC142C7A9A3000C22C1E /* BaseContentView.swift in Sources */,
 				29B4CC322C7BA11900C22C1E /* APIError.swift in Sources */,
 				29B4CC002C7A5E7100C22C1E /* TabBarItemType.swift in Sources */,
+				29B4CC472C7C149300C22C1E /* Publisher+Extension.swift in Sources */,
 				29B4CC182C7A9AC700C22C1E /* ActivityIndicator.swift in Sources */,
 				29B4CBF02C7A5B5B00C22C1E /* MainScene.swift in Sources */,
 				29B4CBBC2C7A4B7A00C22C1E /* CineStoreApp.swift in Sources */,
@@ -874,6 +890,14 @@
 				minimumVersion = 5.9.1;
 			};
 		};
+		29B4CC482C7C1D8400C22C1E /* XCRemoteSwiftPackageReference "Factory" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hmlongco/Factory.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.3.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -891,6 +915,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 29B4CC372C7BAC0D00C22C1E /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		29B4CC492C7C1D8400C22C1E /* Factory */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 29B4CC482C7C1D8400C22C1E /* XCRemoteSwiftPackageReference "Factory" */;
+			productName = Factory;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
