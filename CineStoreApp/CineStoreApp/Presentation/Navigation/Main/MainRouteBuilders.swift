@@ -27,7 +27,8 @@ struct NowPlayingScreenBuilder<RootNavigator: MainRootNavigatorType> {
         var matchPath: String { AppRoutes.nowPlaying.rawValue }
         return .init(matchPath: matchPath) { navigator, _, _ -> RouteViewController? in
             return WrappingController(matchPath: matchPath, title: "Now Playing") {
-                NowPlayingMoviesScreen()
+                let viewModel = NowPlayingMoviesViewModel()
+                NowPlayingMoviesScreen(viewModel: viewModel)
             }
         }
     }

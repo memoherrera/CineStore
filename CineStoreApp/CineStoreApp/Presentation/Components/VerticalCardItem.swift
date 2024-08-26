@@ -17,13 +17,7 @@ struct VerticalImageCard: View {
 
     var body: some View {
         HStack(alignment: .top, spacing: 16) {
-            if let url = URL(string: listItem.imageUrl) {
-                KFImage(url)
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: Constant.imageSize.width, height: Constant.imageSize.height)
-                    .cornerRadius(10)
-            }
+            RemoteImageView(imageUrl: listItem.imageUrl, imageSize: Constant.imageSize)
             VStack(alignment: .leading, spacing: 10) {
                 Text(listItem.title)
                     .font(.headline)

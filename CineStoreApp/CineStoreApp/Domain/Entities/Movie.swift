@@ -28,13 +28,13 @@ struct Movie: Identifiable {
     var genres: [Int] = []
     var overview = ""
     var popularity = 0.0
-    var posterPath = ""
+    var posterPath: String? = ""
     var voteAverage = 0.0
     var releaseDate = ""
     
     // TODO: Check Overloads
     var posterUrl: String {
-        return "\(GlobalConfig.MovieDB.imageUrl)/\(posterPath)"
+        return "\(GlobalConfig.MovieDB.imageUrl)/\(posterPath ?? "")"
     }
 }
 

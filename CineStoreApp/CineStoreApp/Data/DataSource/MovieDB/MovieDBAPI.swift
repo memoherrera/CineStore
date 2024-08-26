@@ -43,7 +43,7 @@ class MovieDBAPI: MovieDBAPIProtocol {
     // Fetch now-playing movies with date range
     func fetchNowPlayingMovies(minDate: String, maxDate: String, page: Int = 1) async throws -> MovieResponse {
         let additionalParameters = [
-            "with_release_type": "2|3",
+            "with_release_type": "2",
             "release_date.gte": minDate,
             "release_date.lte": maxDate
         ]

@@ -10,6 +10,7 @@ import Foundation
 
 public typealias NeverFailingPublisher<T> = AnyPublisher<T, Never>
 public typealias NeverFailingPassthroughSubject<T> = PassthroughSubject<T, Never>
+public typealias NeverFailingCurrentValueSubject<T> = CurrentValueSubject<T, Never>
 public typealias ErrorTracker = PassthroughSubject<Error?, Never>
 
 // MARK: - NeverFailing
