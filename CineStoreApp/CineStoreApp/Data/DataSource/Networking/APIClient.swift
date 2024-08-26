@@ -33,7 +33,6 @@ class APIClient {
         guard let url = URL(string: baseURL + endpoint) else {
             throw APIError.invalidURL
         }
-        print("URL: \(url)")
         // Use default headers if none are provided
         let headers = customHeaders ?? defaultHeaders()
         

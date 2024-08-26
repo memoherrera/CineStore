@@ -55,6 +55,19 @@
 		29B4CC612C7C574E00C22C1E /* MovieUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4CC602C7C574E00C22C1E /* MovieUseCase.swift */; };
 		29B4CC632C7C58FF00C22C1E /* MockMovieRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4CC622C7C58FF00C22C1E /* MockMovieRepository.swift */; };
 		29B4CC652C7C597300C22C1E /* MovieUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4CC642C7C597300C22C1E /* MovieUseCaseTests.swift */; };
+		29B4CC6D2C7C5CBC00C22C1E /* TopRatedMoviesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4CC6C2C7C5CBC00C22C1E /* TopRatedMoviesViewModel.swift */; };
+		29B4CC702C7C5D9200C22C1E /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4CC6F2C7C5D9200C22C1E /* ViewModelProtocol.swift */; };
+		29B4CC732C7C5DF100C22C1E /* CancelBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4CC722C7C5DF100C22C1E /* CancelBag.swift */; };
+		29B4CC752C7C5FB700C22C1E /* ListItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4CC742C7C5FB700C22C1E /* ListItemProtocol.swift */; };
+		29B4CC772C7C62C500C22C1E /* ActivityTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4CC762C7C62C500C22C1E /* ActivityTracker.swift */; };
+		29B4CC792C7C643500C22C1E /* Unwrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4CC782C7C643500C22C1E /* Unwrap.swift */; };
+		29B4CC7B2C7C680C00C22C1E /* MockMovieUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4CC7A2C7C680C00C22C1E /* MockMovieUseCase.swift */; };
+		29B4CC7E2C7C688900C22C1E /* TopRatedMoviesViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4CC7D2C7C688900C22C1E /* TopRatedMoviesViewModelTests.swift */; };
+		29B4CC802C7C718500C22C1E /* VerticalCardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4CC7F2C7C718500C22C1E /* VerticalCardItem.swift */; };
+		29B4CC852C7C72A100C22C1E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 29B4CC842C7C72A100C22C1E /* Kingfisher */; };
+		29B4CC882C7CD8C800C22C1E /* Movie+Listitem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4CC872C7CD8C800C22C1E /* Movie+Listitem.swift */; };
+		29B4CC8A2C7CDB1A00C22C1E /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4CC892C7CDB1A00C22C1E /* String+Extension.swift */; };
+		29B4CC8D2C7CDB9D00C22C1E /* StringExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4CC8C2C7CDB9D00C22C1E /* StringExtensionTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +135,18 @@
 		29B4CC602C7C574E00C22C1E /* MovieUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieUseCase.swift; sourceTree = "<group>"; };
 		29B4CC622C7C58FF00C22C1E /* MockMovieRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMovieRepository.swift; sourceTree = "<group>"; };
 		29B4CC642C7C597300C22C1E /* MovieUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieUseCaseTests.swift; sourceTree = "<group>"; };
+		29B4CC6C2C7C5CBC00C22C1E /* TopRatedMoviesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRatedMoviesViewModel.swift; sourceTree = "<group>"; };
+		29B4CC6F2C7C5D9200C22C1E /* ViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
+		29B4CC722C7C5DF100C22C1E /* CancelBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelBag.swift; sourceTree = "<group>"; };
+		29B4CC742C7C5FB700C22C1E /* ListItemProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemProtocol.swift; sourceTree = "<group>"; };
+		29B4CC762C7C62C500C22C1E /* ActivityTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTracker.swift; sourceTree = "<group>"; };
+		29B4CC782C7C643500C22C1E /* Unwrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unwrap.swift; sourceTree = "<group>"; };
+		29B4CC7A2C7C680C00C22C1E /* MockMovieUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMovieUseCase.swift; sourceTree = "<group>"; };
+		29B4CC7D2C7C688900C22C1E /* TopRatedMoviesViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRatedMoviesViewModelTests.swift; sourceTree = "<group>"; };
+		29B4CC7F2C7C718500C22C1E /* VerticalCardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalCardItem.swift; sourceTree = "<group>"; };
+		29B4CC872C7CD8C800C22C1E /* Movie+Listitem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Movie+Listitem.swift"; sourceTree = "<group>"; };
+		29B4CC892C7CDB1A00C22C1E /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		29B4CC8C2C7CDB9D00C22C1E /* StringExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensionTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +158,7 @@
 				29B4CBE92C7A52E300C22C1E /* LinkNavigator in Frameworks */,
 				29B4CC112C7A94C100C22C1E /* Then in Frameworks */,
 				29B4CC4A2C7C1D8400C22C1E /* Factory in Frameworks */,
+				29B4CC852C7C72A100C22C1E /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,6 +202,7 @@
 		29B4CBBA2C7A4B7A00C22C1E /* CineStoreApp */ = {
 			isa = PBXGroup;
 			children = (
+				29B4CC712C7C5DE700C22C1E /* Utils */,
 				29B4CC452C7C145300C22C1E /* Extensions */,
 				29B4CC242C7B90E900C22C1E /* Configuration */,
 				29B4CBEC2C7A590A00C22C1E /* Data */,
@@ -199,6 +226,7 @@
 		29B4CBCD2C7A4B7B00C22C1E /* CineStoreAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				29B4CC7C2C7C685400C22C1E /* ViewModels */,
 				29B4CC5D2C7C405F00C22C1E /* Repositories */,
 				29B4CC5C2C7C404D00C22C1E /* UseCases */,
 				29B4CC3F2C7BD10100C22C1E /* MovieDBAPI */,
@@ -220,7 +248,8 @@
 		29B4CBEA2C7A58FA00C22C1E /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				29B4CC662C7C5B2F00C22C1E /* ViewModels */,
+				29B4CC862C7CD8AC00C22C1E /* Adapters */,
+				29B4CC6E2C7C5D6200C22C1E /* Common */,
 				29B4CC122C7A990700C22C1E /* Components */,
 				29B4CC0C2C7A920A00C22C1E /* Theme */,
 				29B4CC052C7A6BC800C22C1E /* Screens */,
@@ -289,7 +318,7 @@
 		29B4CC052C7A6BC800C22C1E /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				29B4CC062C7A6C5B00C22C1E /* TopRatedMoviesScreen.swift */,
+				29B4CC6B2C7C5C9D00C22C1E /* TopRatedMovies */,
 				29B4CC082C7A6C7400C22C1E /* NowPlayingMoviesScreen.swift */,
 				29B4CC0A2C7A6C8800C22C1E /* FavoriteMoviesScreen.swift */,
 			);
@@ -310,6 +339,7 @@
 				29B4CC132C7A9A3000C22C1E /* BaseContentView.swift */,
 				29B4CC152C7A9A6900C22C1E /* LoadingView.swift */,
 				29B4CC172C7A9AC700C22C1E /* ActivityIndicator.swift */,
+				29B4CC7F2C7C718500C22C1E /* VerticalCardItem.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -317,6 +347,7 @@
 		29B4CC1A2C7AA35100C22C1E /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				29B4CC8B2C7CDB7A00C22C1E /* Extensions */,
 				29B4CC1D2C7AA5F000C22C1E /* AppearanceManager */,
 			);
 			path = Common;
@@ -389,6 +420,7 @@
 			isa = PBXGroup;
 			children = (
 				29B4CC462C7C149300C22C1E /* Publisher+Extension.swift */,
+				29B4CC892C7CDB1A00C22C1E /* String+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -418,6 +450,7 @@
 			isa = PBXGroup;
 			children = (
 				29B4CC642C7C597300C22C1E /* MovieUseCaseTests.swift */,
+				29B4CC7A2C7C680C00C22C1E /* MockMovieUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -431,11 +464,56 @@
 			path = Repositories;
 			sourceTree = "<group>";
 		};
-		29B4CC662C7C5B2F00C22C1E /* ViewModels */ = {
+		29B4CC6B2C7C5C9D00C22C1E /* TopRatedMovies */ = {
 			isa = PBXGroup;
 			children = (
+				29B4CC062C7A6C5B00C22C1E /* TopRatedMoviesScreen.swift */,
+				29B4CC6C2C7C5CBC00C22C1E /* TopRatedMoviesViewModel.swift */,
+			);
+			path = TopRatedMovies;
+			sourceTree = "<group>";
+		};
+		29B4CC6E2C7C5D6200C22C1E /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				29B4CC6F2C7C5D9200C22C1E /* ViewModelProtocol.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		29B4CC712C7C5DE700C22C1E /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				29B4CC722C7C5DF100C22C1E /* CancelBag.swift */,
+				29B4CC762C7C62C500C22C1E /* ActivityTracker.swift */,
+				29B4CC782C7C643500C22C1E /* Unwrap.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		29B4CC7C2C7C685400C22C1E /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				29B4CC7D2C7C688900C22C1E /* TopRatedMoviesViewModelTests.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		29B4CC862C7CD8AC00C22C1E /* Adapters */ = {
+			isa = PBXGroup;
+			children = (
+				29B4CC742C7C5FB700C22C1E /* ListItemProtocol.swift */,
+				29B4CC872C7CD8C800C22C1E /* Movie+Listitem.swift */,
+			);
+			path = Adapters;
+			sourceTree = "<group>";
+		};
+		29B4CC8B2C7CDB7A00C22C1E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				29B4CC8C2C7CDB9D00C22C1E /* StringExtensionTests.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -459,6 +537,7 @@
 				29B4CC102C7A94C100C22C1E /* Then */,
 				29B4CC382C7BAC0D00C22C1E /* Alamofire */,
 				29B4CC492C7C1D8400C22C1E /* Factory */,
+				29B4CC842C7C72A100C22C1E /* Kingfisher */,
 			);
 			productName = CineStoreApp;
 			productReference = 29B4CBB82C7A4B7A00C22C1E /* CineStoreApp.app */;
@@ -478,6 +557,8 @@
 				29B4CBCC2C7A4B7B00C22C1E /* PBXTargetDependency */,
 			);
 			name = CineStoreAppTests;
+			packageProductDependencies = (
+			);
 			productName = CineStoreAppTests;
 			productReference = 29B4CBCA2C7A4B7B00C22C1E /* CineStoreAppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -537,6 +618,7 @@
 				29B4CC0F2C7A94C100C22C1E /* XCRemoteSwiftPackageReference "Then" */,
 				29B4CC372C7BAC0D00C22C1E /* XCRemoteSwiftPackageReference "Alamofire" */,
 				29B4CC482C7C1D8400C22C1E /* XCRemoteSwiftPackageReference "Factory" */,
+				29B4CC812C7C722200C22C1E /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 29B4CBB92C7A4B7A00C22C1E /* Products */;
 			projectDirPath = "";
@@ -585,16 +667,21 @@
 				29B4CC3C2C7BCE5100C22C1E /* MovieBDAPIProtocol.swift in Sources */,
 				29B4CBFC2C7A5DB900C22C1E /* MainRouteGroup.swift in Sources */,
 				29B4CC072C7A6C5B00C22C1E /* TopRatedMoviesScreen.swift in Sources */,
+				29B4CC772C7C62C500C22C1E /* ActivityTracker.swift in Sources */,
 				29B4CC572C7C223100C22C1E /* MovieRepository.swift in Sources */,
 				29B4CC282C7B918B00C22C1E /* GlobalConfig.swift in Sources */,
+				29B4CC8A2C7CDB1A00C22C1E /* String+Extension.swift in Sources */,
 				29B4CC092C7A6C7400C22C1E /* NowPlayingMoviesScreen.swift in Sources */,
+				29B4CC732C7C5DF100C22C1E /* CancelBag.swift in Sources */,
 				29B4CBF72C7A5C7100C22C1E /* NavigatorDependency.swift in Sources */,
 				29B4CC0B2C7A6C8800C22C1E /* FavoriteMoviesScreen.swift in Sources */,
 				29B4CC552C7C21B700C22C1E /* UseCase+DI.swift in Sources */,
+				29B4CC752C7C5FB700C22C1E /* ListItemProtocol.swift in Sources */,
 				29B4CC302C7BA10200C22C1E /* APIClient.swift in Sources */,
 				29B4CBFE2C7A5E2E00C22C1E /* MainRouteBuilders.swift in Sources */,
 				29B4CC042C7A6AFE00C22C1E /* FavoriteMovie.swift in Sources */,
 				29B4CBF92C7A5CC600C22C1E /* AppRoutes.swift in Sources */,
+				29B4CC792C7C643500C22C1E /* Unwrap.swift in Sources */,
 				29B4CC162C7A9A6900C22C1E /* LoadingView.swift in Sources */,
 				29B4CBF42C7A5C0200C22C1E /* MainRouteView.swift in Sources */,
 				29B4CC142C7A9A3000C22C1E /* BaseContentView.swift in Sources */,
@@ -602,12 +689,16 @@
 				29B4CC002C7A5E7100C22C1E /* TabBarItemType.swift in Sources */,
 				29B4CC472C7C149300C22C1E /* Publisher+Extension.swift in Sources */,
 				29B4CC5B2C7C2B4E00C22C1E /* RepositoryError.swift in Sources */,
+				29B4CC882C7CD8C800C22C1E /* Movie+Listitem.swift in Sources */,
 				29B4CC502C7C20B100C22C1E /* MovieRepositoryProtocol.swift in Sources */,
 				29B4CC182C7A9AC700C22C1E /* ActivityIndicator.swift in Sources */,
+				29B4CC802C7C718500C22C1E /* VerticalCardItem.swift in Sources */,
 				29B4CC532C7C219E00C22C1E /* Repository+DI.swift in Sources */,
 				29B4CBF02C7A5B5B00C22C1E /* MainScene.swift in Sources */,
+				29B4CC6D2C7C5CBC00C22C1E /* TopRatedMoviesViewModel.swift in Sources */,
 				29B4CBBC2C7A4B7A00C22C1E /* CineStoreApp.swift in Sources */,
 				29B4CC592C7C24E600C22C1E /* MovieDBAPI+DI.swift in Sources */,
+				29B4CC702C7C5D9200C22C1E /* ViewModelProtocol.swift in Sources */,
 				29B4CC3E2C7BCE8B00C22C1E /* MovieDBAPI.swift in Sources */,
 				29B4CC0E2C7A925600C22C1E /* UIAppearanceManager.swift in Sources */,
 				29B4CC232C7B90B500C22C1E /* Movie.swift in Sources */,
@@ -618,12 +709,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29B4CC7E2C7C688900C22C1E /* TopRatedMoviesViewModelTests.swift in Sources */,
 				29B4CC652C7C597300C22C1E /* MovieUseCaseTests.swift in Sources */,
 				29B4CC5F2C7C427600C22C1E /* MovieRepositoryTests.swift in Sources */,
 				29B4CC342C7BA27E00C22C1E /* MockUrlProtocol.swift in Sources */,
 				29B4CC432C7BD17600C22C1E /* MovieDBAPITests.swift in Sources */,
 				29B4CC1C2C7AA36F00C22C1E /* UIAppearanceManagerTests.swift in Sources */,
 				29B4CC412C7BD12700C22C1E /* MockMovieDBAPI.swift in Sources */,
+				29B4CC7B2C7C680C00C22C1E /* MockMovieUseCase.swift in Sources */,
+				29B4CC8D2C7CDB9D00C22C1E /* StringExtensionTests.swift in Sources */,
 				29B4CC1F2C7AA60A00C22C1E /* NavigationComponentMock.swift in Sources */,
 				29B4CC632C7C58FF00C22C1E /* MockMovieRepository.swift in Sources */,
 				29B4CC362C7BA88800C22C1E /* APIClientTests.swift in Sources */,
@@ -982,6 +1076,14 @@
 				minimumVersion = 2.3.2;
 			};
 		};
+		29B4CC812C7C722200C22C1E /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1004,6 +1106,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 29B4CC482C7C1D8400C22C1E /* XCRemoteSwiftPackageReference "Factory" */;
 			productName = Factory;
+		};
+		29B4CC842C7C72A100C22C1E /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 29B4CC812C7C722200C22C1E /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -14,7 +14,8 @@ struct TopRatedScreenBuilder<RootNavigator: MainRootNavigatorType> {
         var matchPath: String { AppRoutes.topRated.rawValue }
         return .init(matchPath: matchPath) { navigator, _, _ -> RouteViewController? in
             return WrappingController(matchPath: matchPath, title: "Top Rated") {
-                TopRatedMoviesScreen()
+                let viewModel = TopRatedMoviesViewModel()
+                TopRatedMoviesScreen(viewModel: viewModel)
             }
         }
     }

@@ -10,9 +10,10 @@ import Foundation
 
 public typealias NeverFailingPublisher<T> = AnyPublisher<T, Never>
 public typealias NeverFailingPassthroughSubject<T> = PassthroughSubject<T, Never>
+public typealias ErrorTracker = PassthroughSubject<Error?, Never>
 
 // MARK: - NeverFailing
-extension NeverFailingPublisher {
+extension Publisher {
     public func asNeverFailing() -> NeverFailingPublisher<Output> {
         return self.catch { _ in Empty() }
             .receive(on: RunLoop.main)
@@ -27,3 +28,21 @@ extension NeverFailingPublisher {
         return Empty().eraseToAnyPublisher()
     }
 }
+
+extension Publisher where Failure: Error {
+    public func trackError(_ errorTracker: ErrorTracker) -> AnyPublisher<Output, Failure> {
+        return handleEvents(receiveCompletion: { completion in
+            if case let .failure(error) = completion {
+                errorTracker.send(error)
+            }
+        })
+        .eraseToAnyPublisher()
+    }
+}
+
+extension Publisher where Output: OptionalType {
+    func unwrap() -> Unwrapped<Self> {
+        return Unwrapped(upstream: self)
+    }
+}
+
