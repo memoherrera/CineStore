@@ -31,7 +31,7 @@ struct NowPlayingMoviesScreen: View {
     }
     
     var body: some View {
-        BaseContentView(isLoading: $isLoading, title: "Top Rated") {
+        BaseContentView(isLoading: $isLoading, title: "Now Paying") {
             ScrollView(showsIndicators: false) {
                 topRatedMovies()
             }

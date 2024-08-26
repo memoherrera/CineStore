@@ -29,6 +29,10 @@ class NowPlayingMoviesViewModel: ViewModelProtocol {
         @Published var data = Page()
     }
     
+    func getDateFormated() -> String {
+        return ""
+    }
+    
     func transform(_ input: Input, cancelBag: CancelBag) -> Output {
         let errorTracker = ErrorTracker()
         let activityTracker = ActivityTracker()
@@ -37,7 +41,8 @@ class NowPlayingMoviesViewModel: ViewModelProtocol {
 
        input.loadTrigger
             .map { isReload in
-                self.movieUseCase.getNowPlayingMovies(minDate: "2024-08-26", maxDate: "2024-08-26", page: 1)
+                let now = Date().toFormattedString()
+                return self.movieUseCase.getNowPlayingMovies(minDate: now, maxDate: now, page: 1)
                     .trackError(errorTracker)
                     .trackActivity(isReload ? reloadActivityTracker : activityTracker)
                     .asNeverFailing()

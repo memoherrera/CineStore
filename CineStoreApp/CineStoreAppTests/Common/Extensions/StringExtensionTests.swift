@@ -7,8 +7,6 @@
 
 import XCTest
 
-import XCTest
-
 class StringExtensionTests: XCTestCase {
 
     func testLimitedSubstringWithShortString() {

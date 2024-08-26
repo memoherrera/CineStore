@@ -10,6 +10,8 @@ import Combine
 
 class MockMovieUseCase: MovieUseCaseProtocol {
     var topRatedMoviesResult: Result<[Movie], Error> = .success([])
+    var nowPlayingMoviesResult: Result<[Movie], Error> = .success([])
+    
     
     func getTopRatedMovies(page: Int) -> AnyPublisher<[Movie], Error> {
         return Future { promise in
@@ -18,7 +20,9 @@ class MockMovieUseCase: MovieUseCaseProtocol {
     }
     
     func getNowPlayingMovies(minDate: String, maxDate: String, page: Int) -> AnyPublisher<[Movie], Error> {
-        return Just([]).setFailureType(to: Error.self).eraseToAnyPublisher()
+        return Future { promise in
+            promise(self.nowPlayingMoviesResult)
+        }.eraseToAnyPublisher()
     }
     
     func getMovieDetail(id: Int) -> AnyPublisher<Movie?, Error> {
