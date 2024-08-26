@@ -52,6 +52,9 @@
 		29B4CC592C7C24E600C22C1E /* MovieDBAPI+DI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4CC582C7C24E600C22C1E /* MovieDBAPI+DI.swift */; };
 		29B4CC5B2C7C2B4E00C22C1E /* RepositoryError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4CC5A2C7C2B4E00C22C1E /* RepositoryError.swift */; };
 		29B4CC5F2C7C427600C22C1E /* MovieRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4CC5E2C7C427600C22C1E /* MovieRepositoryTests.swift */; };
+		29B4CC612C7C574E00C22C1E /* MovieUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4CC602C7C574E00C22C1E /* MovieUseCase.swift */; };
+		29B4CC632C7C58FF00C22C1E /* MockMovieRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4CC622C7C58FF00C22C1E /* MockMovieRepository.swift */; };
+		29B4CC652C7C597300C22C1E /* MovieUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4CC642C7C597300C22C1E /* MovieUseCaseTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +119,9 @@
 		29B4CC582C7C24E600C22C1E /* MovieDBAPI+DI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieDBAPI+DI.swift"; sourceTree = "<group>"; };
 		29B4CC5A2C7C2B4E00C22C1E /* RepositoryError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryError.swift; sourceTree = "<group>"; };
 		29B4CC5E2C7C427600C22C1E /* MovieRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRepositoryTests.swift; sourceTree = "<group>"; };
+		29B4CC602C7C574E00C22C1E /* MovieUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieUseCase.swift; sourceTree = "<group>"; };
+		29B4CC622C7C58FF00C22C1E /* MockMovieRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMovieRepository.swift; sourceTree = "<group>"; };
+		29B4CC642C7C597300C22C1E /* MovieUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieUseCaseTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +220,7 @@
 		29B4CBEA2C7A58FA00C22C1E /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				29B4CC662C7C5B2F00C22C1E /* ViewModels */,
 				29B4CC122C7A990700C22C1E /* Components */,
 				29B4CC0C2C7A920A00C22C1E /* Theme */,
 				29B4CC052C7A6BC800C22C1E /* Screens */,
@@ -391,6 +398,7 @@
 			children = (
 				29B4CC4C2C7C1FDA00C22C1E /* MovieUseCaseProtocol.swift */,
 				29B4CC542C7C21B700C22C1E /* UseCase+DI.swift */,
+				29B4CC602C7C574E00C22C1E /* MovieUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -409,6 +417,7 @@
 		29B4CC5C2C7C404D00C22C1E /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				29B4CC642C7C597300C22C1E /* MovieUseCaseTests.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -417,8 +426,16 @@
 			isa = PBXGroup;
 			children = (
 				29B4CC5E2C7C427600C22C1E /* MovieRepositoryTests.swift */,
+				29B4CC622C7C58FF00C22C1E /* MockMovieRepository.swift */,
 			);
 			path = Repositories;
+			sourceTree = "<group>";
+		};
+		29B4CC662C7C5B2F00C22C1E /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -564,6 +581,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				29B4CC4D2C7C1FDA00C22C1E /* MovieUseCaseProtocol.swift in Sources */,
+				29B4CC612C7C574E00C22C1E /* MovieUseCase.swift in Sources */,
 				29B4CC3C2C7BCE5100C22C1E /* MovieBDAPIProtocol.swift in Sources */,
 				29B4CBFC2C7A5DB900C22C1E /* MainRouteGroup.swift in Sources */,
 				29B4CC072C7A6C5B00C22C1E /* TopRatedMoviesScreen.swift in Sources */,
@@ -600,12 +618,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29B4CC652C7C597300C22C1E /* MovieUseCaseTests.swift in Sources */,
 				29B4CC5F2C7C427600C22C1E /* MovieRepositoryTests.swift in Sources */,
 				29B4CC342C7BA27E00C22C1E /* MockUrlProtocol.swift in Sources */,
 				29B4CC432C7BD17600C22C1E /* MovieDBAPITests.swift in Sources */,
 				29B4CC1C2C7AA36F00C22C1E /* UIAppearanceManagerTests.swift in Sources */,
 				29B4CC412C7BD12700C22C1E /* MockMovieDBAPI.swift in Sources */,
 				29B4CC1F2C7AA60A00C22C1E /* NavigationComponentMock.swift in Sources */,
+				29B4CC632C7C58FF00C22C1E /* MockMovieRepository.swift in Sources */,
 				29B4CC362C7BA88800C22C1E /* APIClientTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

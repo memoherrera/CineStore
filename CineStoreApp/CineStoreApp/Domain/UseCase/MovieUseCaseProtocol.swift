@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-protocol MovieUseCase {
+protocol MovieUseCaseProtocol {
     func getTopRatedMovies(page: Int) -> AnyPublisher<[Movie], Error>
     func getNowPlayingMovies(minDate: String, maxDate: String, page: Int) -> AnyPublisher<[Movie], Error>
     func getMovieDetail(id: Int) -> AnyPublisher<Movie?, Error>
