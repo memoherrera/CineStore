@@ -65,12 +65,9 @@ class APIClientTests: XCTestCase {
         
         // Perform the request
         let endpoint = "/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc"
-        let headers: HTTPHeaders = [
-            "Authorization": "a_token_goes_here",
-        ]
         
         do {
-            let movieResponse: MovieResponse = try await client.request(endpoint, headers: headers)
+            let movieResponse: MovieResponse = try await client.request(endpoint)
             XCTAssertEqual(movieResponse.results.count, 1)
             
             let movie = movieResponse.results.first!
@@ -99,12 +96,9 @@ class APIClientTests: XCTestCase {
         
         // Perform the request
         let endpoint = "/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc"
-        let headers: HTTPHeaders = [
-            "Authorization": "a_token_goes_here",
-        ]
         
         do {
-            let _: MovieResponse = try await client.request(endpoint, headers: headers)
+            let _: MovieResponse = try await client.request(endpoint)
             XCTFail("Request should have failed")
         } catch {
             XCTAssertNotNil(error)

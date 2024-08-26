@@ -38,6 +38,10 @@
 		29B4CC342C7BA27E00C22C1E /* MockUrlProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4CC332C7BA27E00C22C1E /* MockUrlProtocol.swift */; };
 		29B4CC362C7BA88800C22C1E /* APIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4CC352C7BA88800C22C1E /* APIClientTests.swift */; };
 		29B4CC392C7BAC0D00C22C1E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 29B4CC382C7BAC0D00C22C1E /* Alamofire */; };
+		29B4CC3C2C7BCE5100C22C1E /* MovieBDAPIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4CC3B2C7BCE5100C22C1E /* MovieBDAPIProtocol.swift */; };
+		29B4CC3E2C7BCE8B00C22C1E /* MovieDBAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4CC3D2C7BCE8B00C22C1E /* MovieDBAPI.swift */; };
+		29B4CC412C7BD12700C22C1E /* MockMovieDBAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4CC402C7BD12700C22C1E /* MockMovieDBAPI.swift */; };
+		29B4CC432C7BD17600C22C1E /* MovieDBAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4CC422C7BD17600C22C1E /* MovieDBAPITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +93,10 @@
 		29B4CC312C7BA11900C22C1E /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		29B4CC332C7BA27E00C22C1E /* MockUrlProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUrlProtocol.swift; sourceTree = "<group>"; };
 		29B4CC352C7BA88800C22C1E /* APIClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientTests.swift; sourceTree = "<group>"; };
+		29B4CC3B2C7BCE5100C22C1E /* MovieBDAPIProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieBDAPIProtocol.swift; sourceTree = "<group>"; };
+		29B4CC3D2C7BCE8B00C22C1E /* MovieDBAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDBAPI.swift; sourceTree = "<group>"; };
+		29B4CC402C7BD12700C22C1E /* MockMovieDBAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMovieDBAPI.swift; sourceTree = "<group>"; };
+		29B4CC422C7BD17600C22C1E /* MovieDBAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDBAPITests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +172,7 @@
 		29B4CBCD2C7A4B7B00C22C1E /* CineStoreAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				29B4CC3F2C7BD10100C22C1E /* MovieDBAPI */,
 				29B4CC292C7BA06A00C22C1E /* Networking */,
 				29B4CC1A2C7AA35100C22C1E /* Common */,
 			);
@@ -293,6 +302,7 @@
 		29B4CC202C7B894A00C22C1E /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
+				29B4CC3A2C7BCE3500C22C1E /* MovieDB */,
 				29B4CC212C7B896200C22C1E /* Networking */,
 			);
 			path = DataSource;
@@ -322,6 +332,24 @@
 				29B4CC352C7BA88800C22C1E /* APIClientTests.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		29B4CC3A2C7BCE3500C22C1E /* MovieDB */ = {
+			isa = PBXGroup;
+			children = (
+				29B4CC3B2C7BCE5100C22C1E /* MovieBDAPIProtocol.swift */,
+				29B4CC3D2C7BCE8B00C22C1E /* MovieDBAPI.swift */,
+			);
+			path = MovieDB;
+			sourceTree = "<group>";
+		};
+		29B4CC3F2C7BD10100C22C1E /* MovieDBAPI */ = {
+			isa = PBXGroup;
+			children = (
+				29B4CC402C7BD12700C22C1E /* MockMovieDBAPI.swift */,
+				29B4CC422C7BD17600C22C1E /* MovieDBAPITests.swift */,
+			);
+			path = MovieDBAPI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -464,6 +492,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29B4CC3C2C7BCE5100C22C1E /* MovieBDAPIProtocol.swift in Sources */,
 				29B4CBFC2C7A5DB900C22C1E /* MainRouteGroup.swift in Sources */,
 				29B4CC072C7A6C5B00C22C1E /* TopRatedMoviesScreen.swift in Sources */,
 				29B4CC282C7B918B00C22C1E /* GlobalConfig.swift in Sources */,
@@ -482,6 +511,7 @@
 				29B4CC182C7A9AC700C22C1E /* ActivityIndicator.swift in Sources */,
 				29B4CBF02C7A5B5B00C22C1E /* MainScene.swift in Sources */,
 				29B4CBBC2C7A4B7A00C22C1E /* CineStoreApp.swift in Sources */,
+				29B4CC3E2C7BCE8B00C22C1E /* MovieDBAPI.swift in Sources */,
 				29B4CC0E2C7A925600C22C1E /* UIAppearanceManager.swift in Sources */,
 				29B4CC232C7B90B500C22C1E /* Movie.swift in Sources */,
 			);
@@ -492,7 +522,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				29B4CC342C7BA27E00C22C1E /* MockUrlProtocol.swift in Sources */,
+				29B4CC432C7BD17600C22C1E /* MovieDBAPITests.swift in Sources */,
 				29B4CC1C2C7AA36F00C22C1E /* UIAppearanceManagerTests.swift in Sources */,
+				29B4CC412C7BD12700C22C1E /* MockMovieDBAPI.swift in Sources */,
 				29B4CC1F2C7AA60A00C22C1E /* NavigationComponentMock.swift in Sources */,
 				29B4CC362C7BA88800C22C1E /* APIClientTests.swift in Sources */,
 			);

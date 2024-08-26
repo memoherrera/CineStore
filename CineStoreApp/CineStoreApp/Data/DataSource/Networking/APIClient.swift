@@ -18,14 +18,23 @@ class APIClient {
         self.session = session
     }
     
+    // Method to get default headers
+    func defaultHeaders() -> HTTPHeaders {
+        return [
+            "Authorization": GlobalConfig.MovieDB.accessToken,
+        ]
+    }
+    
     // Generic request method using async/await
     func request<T: Decodable>(_ endpoint: String,
                                method: HTTPMethod = .get,
                                parameters: [String: Any]? = nil,
-                               headers: HTTPHeaders? = nil) async throws -> T {
+                               customHeaders: HTTPHeaders? = nil) async throws -> T {
         guard let url = URL(string: baseURL + endpoint) else {
             throw APIError.invalidURL
         }
+        // Use default headers if none are provided
+        let headers = customHeaders ?? defaultHeaders()
         
         let data = try await session.request(url, method: method, parameters: parameters, headers: headers)
             .validate()
