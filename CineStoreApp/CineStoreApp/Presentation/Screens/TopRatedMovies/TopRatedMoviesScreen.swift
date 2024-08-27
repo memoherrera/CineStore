@@ -53,7 +53,7 @@ struct TopRatedMoviesScreen: View {
             .contentMargins(.bottom, 120, for: .scrollContent)
         }
         .onAppear {
-            loadTrigger.send(false)
+            // loadTrigger.send(false)
         }.onChange(of: scrollPosition) {
             let lastElementId = output.data.items.last?.id
             if (lastElementId == scrollPosition) {

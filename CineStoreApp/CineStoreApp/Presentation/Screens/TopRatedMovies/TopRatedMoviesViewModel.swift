@@ -56,6 +56,24 @@ class TopRatedMoviesViewModel: ViewModelProtocol {
             .receive(on: RunLoop.main)
             .assign(to: \.isReloading, on: output)
             .cancel(with: cancelBag)
+        
+        Just(true).map { _ in
+            self.movieUseCase.getTopRatedMovies(page: 1)
+                .trackActivity(activityTracker)
+                .trackError(errorTracker)
+                .asNeverFailing()
+        }
+        .switchToLatest()
+        .map { movieResponse in
+            self.totalPages = movieResponse.totalPages
+            let listItems = movieResponse.results.map { $0.toListItem() }
+            var page = Page()
+            page.items = listItems
+            page.currentPage = 1
+            return page
+        }
+        .assign(to: \.data, on: output)
+        .cancel(with: cancelBag)
 
 
         input.loadTrigger
