@@ -72,7 +72,7 @@ class NowPlayingMoviesViewModel: ViewModelProtocol {
                 self.isLoadingPage = true
                 self.currentPage += 1
                 let now = Date().toFormattedString()
-                return self.movieUseCase.getNowPlayingMovies(minDate: now, maxDate: now, page: 1)
+                return self.movieUseCase.getNowPlayingMovies(minDate: now, maxDate: now, page: self.currentPage)
                     .trackError(errorTracker)
                     .trackActivity(activityTracker)
                     .asNeverFailing()
