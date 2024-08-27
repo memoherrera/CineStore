@@ -34,10 +34,6 @@ class NowPlayingMoviesViewModel: ViewModelProtocol {
         @Published var data = Page()
     }
     
-    func getDateFormated() -> String {
-        return ""
-    }
-    
     func transform(_ input: Input, cancelBag: CancelBag) -> Output {
         let errorTracker = ErrorTracker()
         let activityTracker = ActivityTracker()
