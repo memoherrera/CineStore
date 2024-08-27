@@ -52,9 +52,6 @@ struct NowPlayingMoviesScreen: View {
             .scrollBounceBehavior(.basedOnSize)
             .scrollPosition(id: $scrollPosition, anchor: .center)
             .contentMargins(.bottom, 120, for: .scrollContent)
-        }
-        .onAppear {
-            // loadTrigger.send(false)
         }.onChange(of: scrollPosition) {
             let lastElementId = output.data.items.last?.id
             if (lastElementId == scrollPosition) {
