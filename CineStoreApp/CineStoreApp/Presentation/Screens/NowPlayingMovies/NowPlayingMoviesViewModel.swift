@@ -79,8 +79,7 @@ class NowPlayingMoviesViewModel: ViewModelProtocol {
             .receive(on: RunLoop.main)
             .unwrap()
             .sink(receiveValue: { error in
-                // TODO: Show error
-                print(error)
+                self.navigator.showError(message: error.localizedDescription)
             })
             .cancel(with: cancelBag)
         

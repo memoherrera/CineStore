@@ -8,6 +8,7 @@ import SwiftUI
 import Kingfisher
 
 struct MovieDetailScreen: View {
+    
     private var input: MovieDetailViewModel.Input
     @ObservedObject private var output: MovieDetailViewModel.Output
 
@@ -15,9 +16,9 @@ struct MovieDetailScreen: View {
     private let loadTrigger = NeverFailingPassthroughSubject<Bool>()
 
     @ViewBuilder
-    func backdrop(movie: Movie) -> some View {
+    func backdrop(content: ContentDetail) -> some View {
         ZStack(alignment: .bottom) {
-            if let url = URL(string: movie.backdropUrl) {
+            if let url = URL(string: content.imageBackdropUrl) {
                 VStack(alignment: .leading) {
                     KFImage(url)
                         .resizable()
@@ -33,7 +34,7 @@ struct MovieDetailScreen: View {
     }
 
     @ViewBuilder
-    func info(movie: Movie) -> some View {
+    func info(content: ContentDetail) -> some View {
         VStack {
             HStack(spacing: 8) {
                 VStack(alignment: .trailing) {
@@ -41,7 +42,7 @@ struct MovieDetailScreen: View {
                         Image(systemName: "heart.fill")
                             .frame(width: 16, height: 16)
                             .foregroundStyle(.red)
-                        Text("\(Int(movie.voteAverage))/10")
+                        Text("\(Int(content.voteAverage))/10")
                             .font(.subheadline)
                             .fontWeight(.bold)
                             .foregroundColor(Color(UIColor.labelSecondary))
@@ -50,23 +51,23 @@ struct MovieDetailScreen: View {
                         Image(systemName: "star.fill")
                             .frame(width: 16, height: 16)
                             .foregroundStyle(Color.yellow)
-                        Text("\(Int(movie.popularity))")
+                        Text("\(Int(content.popularity))")
                             .font(.subheadline)
                             .fontWeight(.bold)
                             .foregroundColor(Color(UIColor.labelSecondary))
                     }
-                    Text("Status: \(movie.status ?? "")")
+                    Text("Status: \(content.status)")
                         .fontWeight(.light)
                         .font(.system(size: 14))
                         .foregroundStyle(Color(UIColor.labelSecondary))
                     
-                    Text("Release date: \(movie.releaseDate)")
+                    Text("Release date: \(content.releaseDate)")
                         .fontWeight(.light)
                         .font(.system(size: 14))
                         .foregroundStyle(Color(UIColor.labelSecondary))
                 }
                 HStack(alignment: .bottom) {
-                    RemoteImageView(imageUrl: movie.posterUrl, imageSize: CGSize(width: 90, height: 120))
+                    RemoteImageView(imageUrl: content.imagePosterUrl, imageSize: CGSize(width: 90, height: 120))
                         .aspectRatio(contentMode: .fill)
                         .cornerRadius(8)
                 }
@@ -74,17 +75,17 @@ struct MovieDetailScreen: View {
             .padding(.horizontal, 16)
             Spacer()
             
-            Text("Genres: \(movie.fullGenresString())")
+            Text("Genres: \(content.genres)")
                 .fontWeight(.light)
                 .font(.system(size: 16))
                 .foregroundStyle(Color(UIColor.labelSecondary))
             
-            Text("Languages: \(movie.fullLanguagesString())")
+            Text("Languages: \(content.languages)")
                 .fontWeight(.light)
                 .font(.system(size: 14))
                 .foregroundStyle(Color(UIColor.labelSecondary))
             
-            Text("\(movie.overview)")
+            Text("\(content.body)")
                 .padding(.top, 8)
                 .padding(.horizontal, 16)
                 .font(.body)
@@ -93,15 +94,15 @@ struct MovieDetailScreen: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
-
+    
     var body: some View {
-        BaseContentView(isLoading: $output.isLoading, title: output.movie?.title) {
+        BaseContentView(isLoading: $output.isLoading, title: output.contentDetail?.title) {
             ScrollView {
                 Group {
-                    if let movie = output.movie {
+                    if let content = output.contentDetail {
                         VStack(spacing: 8) {
-                            backdrop(movie: movie)
-                            info(movie: movie)
+                            backdrop(content: content)
+                            info(content: content)
                         }
                     } else {
                         VStack {}
@@ -117,6 +118,9 @@ struct MovieDetailScreen: View {
             loadTrigger.send(false)
         }
     }
+    
+
+    
 
     init(viewModel: MovieDetailViewModel) {
         let input = MovieDetailViewModel.Input(loadTrigger: loadTrigger.asNeverFailing())

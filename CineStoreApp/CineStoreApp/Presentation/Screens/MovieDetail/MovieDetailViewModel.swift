@@ -26,7 +26,7 @@ class MovieDetailViewModel: ViewModelProtocol {
     final class Output: ObservableObject {
         @Published var isLoading = false
         @Published var isReloading = false
-        @Published var movie: Movie?
+        @Published var contentDetail: ContentDetail?
     }
 
     func transform(_ input: Input, cancelBag: CancelBag) -> Output {
@@ -43,7 +43,8 @@ class MovieDetailViewModel: ViewModelProtocol {
                     .asNeverFailing()
             }
             .switchToLatest()
-            .assign(to: \.movie, on: output)
+            .map { $0?.toContentDetail() }
+            .assign(to: \.contentDetail, on: output)
             .cancel(with: cancelBag)
 
         activityTracker.isLoading
