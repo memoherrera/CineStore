@@ -35,8 +35,8 @@ class MovieUseCaseTests: XCTestCase {
     func testGetTopRatedMoviesSuccess() {
         // Given
         let expectedMovies = [
-            Movie(id: 1, title: "Mock Movie 1", genres: [28], overview: "Overview 1", popularity: 1000, posterPath: "/path1.jpg", voteAverage: 8.0, releaseDate: "2024-01-01"),
-            Movie(id: 2, title: "Mock Movie 2", genres: [12], overview: "Overview 2", popularity: 900, posterPath: "/path2.jpg", voteAverage: 7.5, releaseDate: "2024-02-01")
+            Movie(id: 1, title: "Mock Movie 1", genreIds: [28], overview: "Overview 1", popularity: 1000, posterPath: "/path1.jpg", voteAverage: 8.0, releaseDate: "2024-01-01"),
+            Movie(id: 2, title: "Mock Movie 2", genreIds: [12], overview: "Overview 2", popularity: 900, posterPath: "/path2.jpg", voteAverage: 7.5, releaseDate: "2024-02-01")
         ]
         mockRepository.topRatedMoviesResult = .success(expectedMovies)
         
@@ -62,7 +62,7 @@ class MovieUseCaseTests: XCTestCase {
     func testGetNowPlayingMoviesSuccess() {
         // Given
         let expectedMovies = [
-            Movie(id: 3, title: "Now Playing Movie 1", genres: [16, 35], overview: "Overview 3", popularity: 800, posterPath: "/path3.jpg", voteAverage: 7.8, releaseDate: "2024-03-01")
+            Movie(id: 3, title: "Now Playing Movie 1", genreIds: [16, 35], overview: "Overview 3", popularity: 800, posterPath: "/path3.jpg", voteAverage: 7.8, releaseDate: "2024-03-01")
         ]
         mockRepository.nowPlayingMoviesResult = .success(expectedMovies)
         
@@ -87,7 +87,7 @@ class MovieUseCaseTests: XCTestCase {
     
     func testGetMovieDetailSuccess() {
         // Given
-        let expectedMovie = Movie(id: 4, title: "Mock Movie Detail", genres: [18, 80], overview: "Detailed Overview", popularity: 500, posterPath: "/path4.jpg", voteAverage: 9.0, releaseDate: "2024-04-01")
+        let expectedMovie = Movie(id: 4, title: "Mock Movie Detail", genreIds: [18, 80], overview: "Detailed Overview", popularity: 500, posterPath: "/path4.jpg", voteAverage: 9.0, releaseDate: "2024-04-01")
         mockRepository.movieDetailResult = .success(expectedMovie)
         
         // When

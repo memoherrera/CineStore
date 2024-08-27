@@ -7,6 +7,7 @@
 
 import Foundation
 import LinkNavigator
+import Factory
 
 // MARK: - Top Rated Screen
 struct TopRatedScreenBuilder<RootNavigator: MainRootNavigatorType> {
@@ -14,7 +15,9 @@ struct TopRatedScreenBuilder<RootNavigator: MainRootNavigatorType> {
         var matchPath: String { AppRoutes.topRated.rawValue }
         return .init(matchPath: matchPath) { navigator, _, _ -> RouteViewController? in
             return WrappingController(matchPath: matchPath, title: "Top Rated") {
-                let viewModel = TopRatedMoviesViewModel()
+                let useCase = Container.shared.movieUseCase.resolve()
+                let navigator = MovieListNavigator(navigation: navigator)
+                let viewModel = TopRatedMoviesViewModel(navigator: navigator, movieUseCase: useCase)
                 TopRatedMoviesScreen(viewModel: viewModel)
             }
         }
@@ -27,7 +30,9 @@ struct NowPlayingScreenBuilder<RootNavigator: MainRootNavigatorType> {
         var matchPath: String { AppRoutes.nowPlaying.rawValue }
         return .init(matchPath: matchPath) { navigator, _, _ -> RouteViewController? in
             return WrappingController(matchPath: matchPath, title: "Now Playing") {
-                let viewModel = NowPlayingMoviesViewModel()
+                let useCase = Container.shared.movieUseCase.resolve()
+                let navigator = MovieListNavigator(navigation: navigator)
+                let viewModel = NowPlayingMoviesViewModel(navigator: navigator, movieUseCase: useCase)
                 NowPlayingMoviesScreen(viewModel: viewModel)
             }
         }
@@ -57,7 +62,11 @@ struct DetailRouteBuilder<RootNavigator: MainRootNavigatorType> {
         var matchPath: String { AppRoutes.detail.rawValue }
         return .init(matchPath: matchPath) { navigator, items, _ -> RouteViewController? in
             return WrappingController(matchPath: matchPath, title: "") {
-                
+                let params: DetailParams = items.decoded() ?? DetailParams(itemId: 0)
+                let navigator = MovieDetailNavigator(navigation: navigator)
+                let useCase = Container.shared.movieUseCase.resolve()
+                let viewModel = MovieDetailViewModel(id: params.itemId, navigator: navigator, movieUseCase: useCase)
+                MovieDetailScreen(viewModel: viewModel)
             }
         }
     }

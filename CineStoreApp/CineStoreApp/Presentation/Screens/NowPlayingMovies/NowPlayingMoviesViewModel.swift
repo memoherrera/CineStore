@@ -10,8 +10,13 @@ import Factory
 import Combine
 
 class NowPlayingMoviesViewModel: ViewModelProtocol {
+    let navigator: MovieListNavigatorProtocol
+    let movieUseCase: MovieUseCaseProtocol
     
-    @Injected(\.movieUseCase) private var movieUseCase
+    public init(navigator: MovieListNavigatorProtocol, movieUseCase: MovieUseCaseProtocol) {
+        self.navigator = navigator
+        self.movieUseCase = movieUseCase
+    }
     
     struct Page {
         var items: [ListItem] = []
@@ -77,6 +82,10 @@ class NowPlayingMoviesViewModel: ViewModelProtocol {
                 // TODO: Show error
                 print(error)
             })
+            .cancel(with: cancelBag)
+        
+        input.toDetailTrigger
+            .sink(receiveValue: navigator.toMovieDetail(id:))
             .cancel(with: cancelBag)
 
         return output

@@ -1,64 +1,50 @@
 //
-//  TopRatedMoviesViewModel.swift
+//  MovieDetailViewModel.swift
 //  CineStoreApp
 //
 //  Created by Guillermo Herrera on 26/08/24.
 //
-
-import Foundation
-import Factory
 import Combine
+import Factory
+import Foundation
 
-class TopRatedMoviesViewModel: ViewModelProtocol {
-    let navigator: MovieListNavigatorProtocol
-    let movieUseCase: MovieUseCaseProtocol
+class MovieDetailViewModel: ViewModelProtocol {
+    let id: Int
+    let navigator: MovieDetailNavigatorProtocol
+    var movieUseCase: MovieUseCaseProtocol
     
-    public init(navigator: MovieListNavigatorProtocol, movieUseCase: MovieUseCaseProtocol) {
+    init(id: Int, navigator: MovieDetailNavigatorProtocol, movieUseCase: MovieUseCaseProtocol) {
+        self.id = id
         self.navigator = navigator
         self.movieUseCase = movieUseCase
     }
-    
-    struct Page {
-        var items: [ListItem] = []
-        var currentPage: Int = 1
-    }
-    
+
     struct Input {
         let loadTrigger: NeverFailingPublisher<Bool>
-        let toDetailTrigger: NeverFailingPublisher<Int>
     }
 
     final class Output: ObservableObject {
         @Published var isLoading = false
         @Published var isReloading = false
-        @Published var data = Page()
+        @Published var movie: Movie?
     }
-    
+
     func transform(_ input: Input, cancelBag: CancelBag) -> Output {
-        let errorTracker = ErrorTracker()
+        let output = Output()
         let activityTracker = ActivityTracker()
         let reloadActivityTracker = ActivityTracker()
-        let output = Output()
+        let errorTracker = ErrorTracker()
 
-       input.loadTrigger
+        input.loadTrigger
             .map { isReload in
-                self.movieUseCase.getTopRatedMovies(page: 1)
+                return self.movieUseCase.getMovieDetail(id: self.id)
                     .trackError(errorTracker)
                     .trackActivity(isReload ? reloadActivityTracker : activityTracker)
                     .asNeverFailing()
             }
             .switchToLatest()
-            .map { movies in
-                movies.map { $0.toListItem() }
-            }.map { listItems in
-                var page = Page()
-                page.items = listItems
-                page.currentPage = 1
-                return page
-            }
-            .assign(to: \.data, on: output)
+            .assign(to: \.movie, on: output)
             .cancel(with: cancelBag)
-
 
         activityTracker.isLoading
             .receive(on: RunLoop.main)
@@ -74,16 +60,11 @@ class TopRatedMoviesViewModel: ViewModelProtocol {
             .receive(on: RunLoop.main)
             .unwrap()
             .sink(receiveValue: { error in
-                // TODO: Show error
-                print(error)
+                self.navigator.showError(message: error.localizedDescription)
             })
-            .cancel(with: cancelBag)
-        
-        input.toDetailTrigger
-            .sink(receiveValue: navigator.toMovieDetail(id:))
             .cancel(with: cancelBag)
 
         return output
     }
-
 }
+

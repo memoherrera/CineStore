@@ -21,20 +21,40 @@ struct MovieResponse: Decodable {
     }
 }
 
-
 struct Movie: Identifiable {
     var id: Int
     var title = ""
-    var genres: [Int] = []
+    var genres: [Genre]? = []
+    var genreIds: [Int]? = []
     var overview = ""
     var popularity = 0.0
     var posterPath: String? = ""
+    var backdropPath: String? = ""
     var voteAverage = 0.0
     var releaseDate = ""
+    var status: String? = ""
+    var languages: [SpokenLanguage]? = []
     
-    // TODO: Check Overloads
     var posterUrl: String {
         return "\(GlobalConfig.MovieDB.imageUrl)/\(posterPath ?? "")"
+    }
+    
+    var backdropUrl: String {
+        return "\(GlobalConfig.MovieDB.imageUrl)/\(backdropPath ?? "")"
+    }
+    
+    func fullLanguagesString() -> String {
+        guard let languages = self.languages else {
+            return ""
+        }
+        return languages.map{ $0.englishName }.joined(separator: ",")
+    }
+    
+    func fullGenresString() -> String {
+        guard let genres = self.genres else {
+            return ""
+        }
+        return genres.map{ $0.name }.joined(separator: ",")
     }
 }
 
@@ -50,11 +70,13 @@ extension Movie: Then, Equatable {
 
 extension Movie: Decodable {
     private enum CodingKeys: String, CodingKey {
-        case id, title, overview, popularity
+        case id, title, overview, popularity, genres, status
         case posterPath = "poster_path"
         case voteAverage = "vote_average"
         case releaseDate = "release_date"
-        case genres = "genre_ids"
+        case genreIds = "genre_ids"
+        case backdropPath = "backdrop_path"
+        case languages = "spoken_languages"
     }
 }
 

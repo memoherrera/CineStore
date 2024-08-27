@@ -74,7 +74,7 @@ class MovieDBAPITests: XCTestCase {
         let movie = movieResponse.results.first!
         XCTAssertEqual(movie.id, 1)
         XCTAssertEqual(movie.title, "Mock Movie")
-        XCTAssertEqual(movie.genres, [28, 12])
+        XCTAssertEqual(movie.genreIds, [28, 12])
         XCTAssertEqual(movie.overview, "This is a mock movie.")
         XCTAssertEqual(movie.popularity, 1234.56)
         XCTAssertEqual(movie.posterPath, "/mock.jpg")
@@ -121,7 +121,7 @@ class MovieDBAPITests: XCTestCase {
         let movie = movieResponse.results.first!
         XCTAssertEqual(movie.id, 2)
         XCTAssertEqual(movie.title, "Now Playing Mock Movie")
-        XCTAssertEqual(movie.genres, [16, 35])
+        XCTAssertEqual(movie.genreIds, [16, 35])
         XCTAssertEqual(movie.overview, "This is a now playing mock movie.")
         XCTAssertEqual(movie.popularity, 987.65)
         XCTAssertEqual(movie.posterPath, "/nowplayingmock.jpg")
@@ -159,7 +159,7 @@ class MovieDBAPITests: XCTestCase {
         // Then
         XCTAssertEqual(movie.id, 3)
         XCTAssertEqual(movie.title, "Mock Movie Details")
-        XCTAssertEqual(movie.genres, [18, 80])
+        XCTAssertEqual(movie.genreIds, [18, 80])
         XCTAssertEqual(movie.overview, "This is mock movie details.")
         XCTAssertEqual(movie.popularity, 456.78)
         XCTAssertEqual(movie.posterPath, "/mockdetails.jpg")

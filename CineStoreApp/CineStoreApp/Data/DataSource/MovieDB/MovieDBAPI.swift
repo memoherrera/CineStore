@@ -34,6 +34,22 @@ class MovieDBAPI: MovieDBAPIProtocol {
         return components.string!
     }
     
+    // Helper method to construct the base URL for movie discovery
+    private func constructMovieDedtailURL(movieID: Int, additionalParameters: [String: String]) -> String {
+        var components = URLComponents(string: "/movie/\(movieID)?")!
+        components.queryItems = [
+            URLQueryItem(name: "api_key", value: GlobalConfig.MovieDB.apiKey),
+            URLQueryItem(name: "language", value: "en-US"),
+        ]
+        
+        // Append additional parameters specific to each endpoint
+        for (key, value) in additionalParameters {
+            components.queryItems?.append(URLQueryItem(name: key, value: value))
+        }
+        
+        return components.string!
+    }
+    
     // Fetch top-rated movies
     func fetchTopRatedMovies(page: Int = 1) async throws -> MovieResponse {
         let endpoint = constructMovieDiscoveryURL(page: page, additionalParameters: [:])
@@ -53,7 +69,7 @@ class MovieDBAPI: MovieDBAPIProtocol {
     
     // Fetch movie details by ID
     func fetchMovieDetails(movieID: Int) async throws -> Movie {
-        let endpoint = "/movie/\(movieID)"
+        let endpoint = constructMovieDedtailURL(movieID: movieID, additionalParameters: [:])
         return try await client.request(endpoint)
     }
 }

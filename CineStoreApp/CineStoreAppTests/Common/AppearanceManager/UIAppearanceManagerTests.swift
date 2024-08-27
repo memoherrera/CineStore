@@ -19,7 +19,7 @@ final class UIAppearanceManagerTests: XCTestCase {
 
         // Then
         XCTAssertEqual(mockNavigationBar.capturedIsTranslucent, false)
-        XCTAssertEqual(mockNavigationBar.capturedTintColor, UIColor.backgroundPrimary)
+        XCTAssertEqual(mockNavigationBar.capturedTintColor, UIColor.accent)
         XCTAssertNotNil(mockNavigationBar.capturedStandardAppearance)
         XCTAssertEqual(mockNavigationBar.capturedStandardAppearance?.backgroundColor, UIColor.backgroundPrimary)
     }

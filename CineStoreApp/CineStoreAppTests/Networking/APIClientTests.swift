@@ -73,7 +73,7 @@ class APIClientTests: XCTestCase {
             let movie = movieResponse.results.first!
             XCTAssertEqual(movie.id, 1)
             XCTAssertEqual(movie.title, "Mock Movie")
-            XCTAssertEqual(movie.genres, [28, 12])
+            XCTAssertEqual(movie.genreIds, [28, 12])
             XCTAssertEqual(movie.overview, "This is a mock movie.")
             XCTAssertEqual(movie.popularity, 1234.56)
             XCTAssertEqual(movie.posterPath, "/mock.jpg")

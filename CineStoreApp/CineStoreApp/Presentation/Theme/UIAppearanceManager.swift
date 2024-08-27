@@ -18,7 +18,7 @@ struct UIAppearanceManager {
     static func configureNavigationBar(navigationBar: UINavigationBar) {
         navigationBar.do {
             $0.isTranslucent = false
-            $0.tintColor = UIColor.backgroundPrimary
+            $0.tintColor = UIColor.accent
         }
 
         let appearance = UINavigationBarAppearance().with {
@@ -27,12 +27,11 @@ struct UIAppearanceManager {
             $0.shadowColor = .clear
             $0.shadowImage = UIImage()
             $0.titleTextAttributes = [.foregroundColor: UIColor.accent]
-            $0.backButtonAppearance.focused.titleTextAttributes = [.foregroundColor: UIColor.clear]
-            $0.backButtonAppearance.disabled.titleTextAttributes = [.foregroundColor: UIColor.clear]
-            $0.backButtonAppearance.highlighted.titleTextAttributes = [.foregroundColor: UIColor.clear]
-            $0.backButtonAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.clear]
         }
-        navigationBar.standardAppearance = appearance
+        navigationBar.do {
+            $0.standardAppearance = appearance
+            $0.scrollEdgeAppearance = appearance
+        }
     }
     
     static func configureTabBar(tabBar: UITabBar) {
@@ -47,5 +46,6 @@ struct UIAppearanceManager {
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = UIColor.backgroundPrimary
         tabBar.standardAppearance = appearance
+        tabBar.scrollEdgeAppearance = appearance
     }
 }

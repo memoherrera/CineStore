@@ -27,7 +27,7 @@ struct VerticalImageCard: View {
                 HStack {
                     Image(systemName: "heart.fill")
                         .resizable()
-                        .frame(width: 24, height: 24)
+                        .frame(width: 16, height: 16)
                         .foregroundStyle(.red)
                     Text(listItem.subtitle)
                         .font(.subheadline)

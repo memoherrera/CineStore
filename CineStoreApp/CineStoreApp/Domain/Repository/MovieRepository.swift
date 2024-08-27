@@ -56,6 +56,7 @@ class MovieRepository: MovieRepositoryProtocol {
                     let movie = try await self.api.fetchMovieDetails(movieID: id)
                     promise(.success(movie))
                 } catch {
+                    print(error)
                     promise(.failure(MovieRepositoryError.apiError(error)))
                 }
             }
