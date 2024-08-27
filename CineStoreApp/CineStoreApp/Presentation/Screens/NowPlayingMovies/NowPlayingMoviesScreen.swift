@@ -9,16 +9,18 @@ import SwiftUI
 
 struct NowPlayingMoviesScreen: View {
     @State var isLoading: Bool = false
+    @State var scrollPosition: Int? = nil
     var input: NowPlayingMoviesViewModel.Input
     @ObservedObject var output: NowPlayingMoviesViewModel.Output
     
     private let cancelBag = CancelBag()
     private let toDetailTrigger = NeverFailingPassthroughSubject<Int>()
     private let loadTrigger = NeverFailingPassthroughSubject<Bool>()
+    private var loadNextPageTrigger = NeverFailingPassthroughSubject<Bool>()
     
     @ViewBuilder
-    func topRatedMovies() -> some View {
-        Section() {
+    func nowPlayingMovies() -> some View {
+        LazyVStack {
             ForEach(output.data.items) { listItem in
                 Button {
                     toDetailTrigger.send(listItem.id)
@@ -27,28 +29,46 @@ struct NowPlayingMoviesScreen: View {
                 }
                 .tint(.black)
             }
-        }
+            if output.isLoading {
+                ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle(tint: Color.accentColor))
+                    .scaleEffect(1.25, anchor: .center)
+                    .frame(maxWidth: .infinity)
+                    .padding()
+            }
+        }.scrollTargetLayout()
     }
     
     var body: some View {
         BaseContentView(isLoading: $isLoading, title: "Now Paying") {
             ScrollView(showsIndicators: false) {
-                topRatedMovies()
+                nowPlayingMovies()
             }
             .padding(16)
             .refreshable {
                 loadTrigger.send(true)
             }
+            .scrollTargetBehavior(.viewAligned)
+            .scrollBounceBehavior(.basedOnSize)
+            .scrollPosition(id: $scrollPosition, anchor: .center)
+            .contentMargins(.bottom, 120, for: .scrollContent)
         }
         .onAppear {
             loadTrigger.send(false)
+        }.onChange(of: scrollPosition) {
+            let lastElementId = output.data.items.last?.id
+            if (lastElementId == scrollPosition) {
+                loadNextPageTrigger.send(true)
+            }
         }
         
     }
     
     init(viewModel: NowPlayingMoviesViewModel) {
-        let input = NowPlayingMoviesViewModel.Input(loadTrigger: loadTrigger.asNeverFailing(),
-                                             toDetailTrigger: toDetailTrigger.asNeverFailing())
+        let input = NowPlayingMoviesViewModel.Input(
+            loadTrigger: loadTrigger.asNeverFailing(),
+            loadNextPageTrigger: loadNextPageTrigger.asNeverFailing(),
+            toDetailTrigger: toDetailTrigger.asNeverFailing())
         output = viewModel.transform(input, cancelBag: cancelBag)
         self.input = input
     }

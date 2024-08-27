@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol MovieRepositoryProtocol {
-    func getTopRatedMovies(page: Int) -> AnyPublisher<[Movie], Error>
-    func getNowPlayingMovies(minDate: String, maxDate: String, page: Int) -> AnyPublisher<[Movie], Error>
+    func getTopRatedMovies(page: Int) -> AnyPublisher<MovieResponse, Error>
+    func getNowPlayingMovies(minDate: String, maxDate: String, page: Int) -> AnyPublisher<MovieResponse, Error>
     func getMovieDetail(id: Int) -> AnyPublisher<Movie?, Error>
 }

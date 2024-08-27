@@ -12,15 +12,15 @@ import Factory
 class MovieRepository: MovieRepositoryProtocol {
     @Injected(\.movieDBAPI) private var api
     
-    func getTopRatedMovies(page: Int) -> AnyPublisher<[Movie], Error> {
-            Future<[Movie], Error> { [weak self] promise in
+    func getTopRatedMovies(page: Int) -> AnyPublisher<MovieResponse, Error> {
+            Future<MovieResponse, Error> { [weak self] promise in
                 guard let self = self else {
                     return promise(.failure(MovieRepositoryError.deallocatedInstance))
                 }
                 Task {
                     do {
                         let movieResponse = try await self.api.fetchTopRatedMovies(page: page)
-                        promise(.success(movieResponse.results))
+                        promise(.success(movieResponse))
                     } catch {
                         promise(.failure(MovieRepositoryError.apiError(error)))
                     }
@@ -29,15 +29,15 @@ class MovieRepository: MovieRepositoryProtocol {
             .eraseToAnyPublisher()
     }
     
-    func getNowPlayingMovies(minDate: String, maxDate: String, page: Int) -> AnyPublisher<[Movie], Error> {
-        Future<[Movie], Error> { [weak self] promise in
+    func getNowPlayingMovies(minDate: String, maxDate: String, page: Int) -> AnyPublisher<MovieResponse, Error> {
+        Future<MovieResponse, Error> { [weak self] promise in
             guard let self = self else {
                 return promise(.failure(MovieRepositoryError.deallocatedInstance))
             }
             Task {
                 do {
                     let movieResponse = try await self.api.fetchNowPlayingMovies(minDate: minDate, maxDate: maxDate, page: page)
-                    promise(.success(movieResponse.results))
+                    promise(.success(movieResponse))
                 } catch {
                     promise(.failure(MovieRepositoryError.apiError(error)))
                 }

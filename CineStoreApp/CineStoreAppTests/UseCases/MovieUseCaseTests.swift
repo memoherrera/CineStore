@@ -38,7 +38,7 @@ class MovieUseCaseTests: XCTestCase {
             Movie(id: 1, title: "Mock Movie 1", genreIds: [28], overview: "Overview 1", popularity: 1000, posterPath: "/path1.jpg", voteAverage: 8.0, releaseDate: "2024-01-01"),
             Movie(id: 2, title: "Mock Movie 2", genreIds: [12], overview: "Overview 2", popularity: 900, posterPath: "/path2.jpg", voteAverage: 7.5, releaseDate: "2024-02-01")
         ]
-        mockRepository.topRatedMoviesResult = .success(expectedMovies)
+        mockRepository.topRatedMoviesResult = .success(MovieResponse(page: 1, results: expectedMovies, totalPages: 1, totalResults: 2))
         
         // When
         let expectation = XCTestExpectation(description: "Fetch top-rated movies")
@@ -50,8 +50,8 @@ class MovieUseCaseTests: XCTestCase {
                 }
             }, receiveValue: { movies in
                 // Then
-                XCTAssertEqual(movies.count, expectedMovies.count)
-                XCTAssertEqual(movies, expectedMovies)
+                XCTAssertEqual(movies.results.count, expectedMovies.count)
+                XCTAssertEqual(movies.results, expectedMovies)
                 expectation.fulfill()
             })
             .store(in: &cancellables)
@@ -64,7 +64,7 @@ class MovieUseCaseTests: XCTestCase {
         let expectedMovies = [
             Movie(id: 3, title: "Now Playing Movie 1", genreIds: [16, 35], overview: "Overview 3", popularity: 800, posterPath: "/path3.jpg", voteAverage: 7.8, releaseDate: "2024-03-01")
         ]
-        mockRepository.nowPlayingMoviesResult = .success(expectedMovies)
+        mockRepository.nowPlayingMoviesResult = .success(MovieResponse(page: 1, results: expectedMovies, totalPages: 1, totalResults: 1))
         
         // When
         let expectation = XCTestExpectation(description: "Fetch now-playing movies")
@@ -76,8 +76,8 @@ class MovieUseCaseTests: XCTestCase {
                 }
             }, receiveValue: { movies in
                 // Then
-                XCTAssertEqual(movies.count, expectedMovies.count)
-                XCTAssertEqual(movies, expectedMovies)
+                XCTAssertEqual(movies.results.count, expectedMovies.count)
+                XCTAssertEqual(movies.results, expectedMovies)
                 expectation.fulfill()
             })
             .store(in: &cancellables)

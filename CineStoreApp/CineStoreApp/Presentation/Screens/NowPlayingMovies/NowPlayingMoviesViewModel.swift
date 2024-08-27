@@ -21,10 +21,16 @@ class NowPlayingMoviesViewModel: ViewModelProtocol {
     struct Page {
         var items: [ListItem] = []
         var currentPage: Int = 1
+        var totalPages: Int = 1
     }
+    
+    private var currentPage: Int = 1
+    private var totalPages: Int = 1
+    private var isLoadingPage = false
     
     struct Input {
         let loadTrigger: NeverFailingPublisher<Bool>
+        let loadNextPageTrigger: NeverFailingPublisher<Bool>
         let toDetailTrigger: NeverFailingPublisher<Int>
     }
 
@@ -49,13 +55,35 @@ class NowPlayingMoviesViewModel: ViewModelProtocol {
                     .asNeverFailing()
             }
             .switchToLatest()
-            .map { movies in
-                movies.map { $0.toListItem() }
-            }.map { listItems in
+            .map { movieResponse in
+                self.totalPages = movieResponse.totalPages
+                let listItems = movieResponse.results.map { $0.toListItem() }
                 var page = Page()
                 page.items = listItems
                 page.currentPage = 1
                 return page
+            }
+            .assign(to: \.data, on: output)
+            .cancel(with: cancelBag)
+        
+        input.loadNextPageTrigger
+            .filter { _ in !self.isLoadingPage && self.currentPage < self.totalPages }
+            .map { _ in
+                self.isLoadingPage = true
+                self.currentPage += 1
+                let now = Date().toFormattedString()
+                return self.movieUseCase.getNowPlayingMovies(minDate: now, maxDate: now, page: 1)
+                    .trackError(errorTracker)
+                    .trackActivity(activityTracker)
+                    .asNeverFailing()
+            }
+            .switchToLatest()
+            .map { movieResponse in
+                self.isLoadingPage = false
+                var currentItems = output.data.items
+                let listItems = movieResponse.results.map { $0.toListItem() }
+                currentItems.append(contentsOf: listItems)
+                return Page(items: currentItems, currentPage: self.currentPage, totalPages: self.totalPages)
             }
             .assign(to: \.data, on: output)
             .cancel(with: cancelBag)

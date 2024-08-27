@@ -44,10 +44,11 @@ class MovieDetailViewModelTests: XCTestCase {
         let expectedMovie = Movie(
             id: 1,
             title: "Test Movie",
-            genreIds: [18, 28],
+            genres: [Genre(id: 18, name: "Action"), Genre(id: 28, name: "Drama")],
             overview: "This is a test movie overview.",
             popularity: 123.45,
             posterPath: "/testposter.jpg",
+            backdropPath: "/testBackdrop.jpg",
             voteAverage: 8.7,
             releaseDate: "2024-01-01"
         )
@@ -60,20 +61,23 @@ class MovieDetailViewModelTests: XCTestCase {
         let expectation = XCTestExpectation(description: "Should load movie detail successfully")
         
         // Observe output changes
-        output.$movie
-            .compactMap { $0 } // Ignore nil values
-            .sink { movie in
-                XCTAssertEqual(movie.id, expectedMovie.id)
-                XCTAssertEqual(movie.title, expectedMovie.title)
-                XCTAssertEqual(movie.genres, expectedMovie.genres)
-                XCTAssertEqual(movie.overview, expectedMovie.overview)
-                XCTAssertEqual(movie.popularity, expectedMovie.popularity)
-                XCTAssertEqual(movie.posterPath, expectedMovie.posterPath)
-                XCTAssertEqual(movie.voteAverage, expectedMovie.voteAverage)
-                XCTAssertEqual(movie.releaseDate, expectedMovie.releaseDate)
-                expectation.fulfill()
-            }
-            .store(in: &cancellables)
+        output.$contentDetail
+           .compactMap { $0 } // Ignore nil values
+           .sink { contentDetail in
+               XCTAssertEqual(contentDetail.id, expectedMovie.id)
+               XCTAssertEqual(contentDetail.title, expectedMovie.title)
+               XCTAssertEqual(contentDetail.status, expectedMovie.status)
+               XCTAssertEqual(contentDetail.releaseDate, expectedMovie.releaseDate)
+               XCTAssertEqual(contentDetail.voteAverage, expectedMovie.voteAverage)
+               XCTAssertEqual(contentDetail.popularity, expectedMovie.popularity)
+               XCTAssertEqual(contentDetail.body, expectedMovie.overview)
+               XCTAssertEqual(contentDetail.genres, expectedMovie.fullGenresString())
+               XCTAssertEqual(contentDetail.languages, expectedMovie.fullLanguagesString())
+               XCTAssertEqual(contentDetail.imagePosterUrl, expectedMovie.posterUrl)
+               XCTAssertEqual(contentDetail.imageBackdropUrl, expectedMovie.backdropUrl)
+               expectation.fulfill()
+           }
+           .store(in: &cancellables)
         
         // Observe loading states
         var isLoadingStates: [Bool] = []
@@ -108,9 +112,9 @@ class MovieDetailViewModelTests: XCTestCase {
         let expectation = XCTestExpectation(description: "Should handle movie detail loading failure")
         
         // Observe output changes
-        output.$movie
-            .sink { movie in
-                XCTAssertNil(movie)
+        output.$contentDetail
+            .sink { detail in
+                XCTAssertNil(detail)
             }
             .store(in: &cancellables)
         

@@ -9,11 +9,12 @@ import Foundation
 @testable import CineStoreApp
 
 class MockMovieRepository: MovieRepositoryProtocol {
-    var topRatedMoviesResult: Result<[Movie], Error>?
-    var nowPlayingMoviesResult: Result<[Movie], Error>?
+    
+    var topRatedMoviesResult: Result<MovieResponse, Error>?
+    var nowPlayingMoviesResult: Result<MovieResponse, Error>?
     var movieDetailResult: Result<Movie?, Error>?
     
-    func getTopRatedMovies(page: Int) -> AnyPublisher<[Movie], Error> {
+    func getTopRatedMovies(page: Int) -> AnyPublisher<MovieResponse, Error> {
         return Future { promise in
             if let result = self.topRatedMoviesResult {
                 promise(result)
@@ -23,7 +24,7 @@ class MockMovieRepository: MovieRepositoryProtocol {
         }.eraseToAnyPublisher()
     }
     
-    func getNowPlayingMovies(minDate: String, maxDate: String, page: Int) -> AnyPublisher<[Movie], Error> {
+    func getNowPlayingMovies(minDate: String, maxDate: String, page: Int) -> AnyPublisher<MovieResponse, Error> {
         return Future { promise in
             if let result = self.nowPlayingMoviesResult {
                 promise(result)

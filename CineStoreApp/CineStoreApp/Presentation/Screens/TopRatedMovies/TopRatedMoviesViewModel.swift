@@ -21,10 +21,16 @@ class TopRatedMoviesViewModel: ViewModelProtocol {
     struct Page {
         var items: [ListItem] = []
         var currentPage: Int = 1
+        var totalPages: Int = 1
     }
+    
+    private var currentPage: Int = 1
+    private var totalPages: Int = 1
+    private var isLoadingPage = false
     
     struct Input {
         let loadTrigger: NeverFailingPublisher<Bool>
+        let loadNextPageTrigger: NeverFailingPublisher<Bool>
         let toDetailTrigger: NeverFailingPublisher<Int>
     }
 
@@ -35,31 +41,12 @@ class TopRatedMoviesViewModel: ViewModelProtocol {
     }
     
     func transform(_ input: Input, cancelBag: CancelBag) -> Output {
+        
         let errorTracker = ErrorTracker()
         let activityTracker = ActivityTracker()
         let reloadActivityTracker = ActivityTracker()
         let output = Output()
-
-       input.loadTrigger
-            .map { isReload in
-                self.movieUseCase.getTopRatedMovies(page: 1)
-                    .trackError(errorTracker)
-                    .trackActivity(isReload ? reloadActivityTracker : activityTracker)
-                    .asNeverFailing()
-            }
-            .switchToLatest()
-            .map { movies in
-                movies.map { $0.toListItem() }
-            }.map { listItems in
-                var page = Page()
-                page.items = listItems
-                page.currentPage = 1
-                return page
-            }
-            .assign(to: \.data, on: output)
-            .cancel(with: cancelBag)
-
-
+        
         activityTracker.isLoading
             .receive(on: RunLoop.main)
             .assign(to: \.isLoading, on: output)
@@ -68,6 +55,47 @@ class TopRatedMoviesViewModel: ViewModelProtocol {
         reloadActivityTracker.isLoading
             .receive(on: RunLoop.main)
             .assign(to: \.isReloading, on: output)
+            .cancel(with: cancelBag)
+
+
+        input.loadTrigger
+            .map { isReload in
+                self.movieUseCase.getTopRatedMovies(page: 1)
+                    .trackActivity(isReload ? reloadActivityTracker : activityTracker)
+                    .trackError(errorTracker)
+                    .asNeverFailing()
+            }
+            .switchToLatest()
+            .map { movieResponse in
+                self.totalPages = movieResponse.totalPages
+                let listItems = movieResponse.results.map { $0.toListItem() }
+                var page = Page()
+                page.items = listItems
+                page.currentPage = 1
+                return page
+            }
+            .assign(to: \.data, on: output)
+            .cancel(with: cancelBag)
+        
+        input.loadNextPageTrigger
+            .filter { _ in !self.isLoadingPage && self.currentPage < self.totalPages }
+            .map { _ in
+                self.isLoadingPage = true
+                self.currentPage += 1
+                return self.movieUseCase.getTopRatedMovies(page: self.currentPage)
+                    .trackActivity(activityTracker)
+                    .trackError(errorTracker)
+                    .asNeverFailing()
+            }
+            .switchToLatest()
+            .map { movieResponse in
+                self.isLoadingPage = false
+                var currentItems = output.data.items
+                let listItems = movieResponse.results.map { $0.toListItem() }
+                currentItems.append(contentsOf: listItems)
+                return Page(items: currentItems, currentPage: self.currentPage, totalPages: self.totalPages)
+            }
+            .assign(to: \.data, on: output)
             .cancel(with: cancelBag)
 
         errorTracker

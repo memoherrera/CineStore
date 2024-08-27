@@ -59,7 +59,7 @@ class APIClientTests: XCTestCase {
             let response = HTTPURLResponse(url: URL(string: "https://api.themoviedb.org")!,
                                            statusCode: 200,
                                            httpVersion: nil,
-                                           headerFields: nil)!
+                                           headerFields: ["Content-Type": "application/json"])!
             return (response, jsonData)
         }
         
@@ -90,7 +90,7 @@ class APIClientTests: XCTestCase {
             let response = HTTPURLResponse(url: URL(string: self.baseUrl)!,
                                            statusCode: 500,
                                            httpVersion: nil,
-                                           headerFields: nil)!
+                                           headerFields: ["Content-Type": "application/json"])!
             return (response, nil)
         }
         

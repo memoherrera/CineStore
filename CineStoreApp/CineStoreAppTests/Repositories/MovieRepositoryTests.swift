@@ -52,8 +52,8 @@ final class MovieRepositoryTests: XCTestCase {
                 }
             }, receiveValue: { movies in
                 // Then
-                XCTAssertEqual(movies.count, expectedMovies.count)
-                XCTAssertEqual(movies, expectedMovies)
+                XCTAssertEqual(movies.results.count, expectedMovies.count)
+                XCTAssertEqual(movies.results, expectedMovies)
                 expectation.fulfill()
             })
             .store(in: &cancellables)
@@ -79,8 +79,8 @@ final class MovieRepositoryTests: XCTestCase {
                 }
             }, receiveValue: { movies in
                 // Then
-                XCTAssertEqual(movies.count, expectedMovies.count)
-                XCTAssertEqual(movies, expectedMovies)
+                XCTAssertEqual(movies.results.count, expectedMovies.count)
+                XCTAssertEqual(movies.results, expectedMovies)
                 expectation.fulfill()
             })
             .store(in: &cancellables)

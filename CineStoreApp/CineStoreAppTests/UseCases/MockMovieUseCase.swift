@@ -9,18 +9,18 @@ import Combine
 @testable import CineStoreApp
 
 class MockMovieUseCase: MovieUseCaseProtocol {
-    var topRatedMoviesResult: Result<[Movie], Error> = .success([])
-    var nowPlayingMoviesResult: Result<[Movie], Error> = .success([])
+    var topRatedMoviesResult: Result<MovieResponse, Error> = .success(MovieResponse.init(page: 1, results: [], totalPages: 1, totalResults: 0))
+    var nowPlayingMoviesResult: Result<MovieResponse, Error> = .success(MovieResponse.init(page: 1, results: [], totalPages: 1, totalResults: 0))
     var getMovieDetailResult: Result<Movie?, Error> = .success(nil)
     
     
-    func getTopRatedMovies(page: Int) -> AnyPublisher<[Movie], Error> {
+    func getTopRatedMovies(page: Int) -> AnyPublisher<MovieResponse, Error> {
         return Future { promise in
             promise(self.topRatedMoviesResult)
         }.eraseToAnyPublisher()
     }
     
-    func getNowPlayingMovies(minDate: String, maxDate: String, page: Int) -> AnyPublisher<[Movie], Error> {
+    func getNowPlayingMovies(minDate: String, maxDate: String, page: Int) -> AnyPublisher<MovieResponse, Error> {
         return Future { promise in
             promise(self.nowPlayingMoviesResult)
         }.eraseToAnyPublisher()

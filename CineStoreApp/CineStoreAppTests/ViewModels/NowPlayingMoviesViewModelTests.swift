@@ -43,12 +43,13 @@ class NowPlayingMoviesViewModelTests: XCTestCase {
             Movie(id: 1, title: "Mock Movie 1", genreIds: [28], overview: "Overview 1", popularity: 1000, posterPath: "/path1.jpg", voteAverage: 8.0,  releaseDate: "2024-01-01"),
             Movie(id: 2, title: "Mock Movie 2", genreIds: [12], overview: "Overview 2", popularity: 900, posterPath: "/path2.jpg", voteAverage: 7.5, releaseDate: "2024-02-01")
         ]
-        mockUseCase.nowPlayingMoviesResult = .success(expectedMovies)
+        mockUseCase.nowPlayingMoviesResult = .success(MovieResponse(page: 1, results: expectedMovies, totalPages: 1, totalResults: 2))
        
         // Create inputs
         let loadTrigger = PassthroughSubject<Bool, Never>()
+        let loadNextPageTrigger = PassthroughSubject<Bool, Never>()
         let toDetailTrigger = PassthroughSubject<Int, Never>()
-        let input = NowPlayingMoviesViewModel.Input(loadTrigger: loadTrigger.eraseToAnyPublisher(), toDetailTrigger: toDetailTrigger.eraseToAnyPublisher())
+        let input = NowPlayingMoviesViewModel.Input(loadTrigger: loadTrigger.eraseToAnyPublisher(), loadNextPageTrigger: loadNextPageTrigger.eraseToAnyPublisher(), toDetailTrigger: toDetailTrigger.eraseToAnyPublisher())
        
         // When
         let output = viewModel.transform(input, cancelBag: cancelBag)
@@ -79,8 +80,9 @@ class NowPlayingMoviesViewModelTests: XCTestCase {
         
         // Create inputs
         let loadTrigger = Just(true).setFailureType(to: Never.self).eraseToAnyPublisher()
+        let loadNextPageTrigger = PassthroughSubject<Bool, Never>()
         let toDetailTrigger = PassthroughSubject<Int, Never>()
-        let input = NowPlayingMoviesViewModel.Input(loadTrigger: loadTrigger, toDetailTrigger: toDetailTrigger.eraseToAnyPublisher())
+        let input = NowPlayingMoviesViewModel.Input(loadTrigger: loadTrigger, loadNextPageTrigger: loadNextPageTrigger.eraseToAnyPublisher(), toDetailTrigger: toDetailTrigger.eraseToAnyPublisher())
         
         // When
         let output = viewModel.transform(input, cancelBag: cancelBag)
