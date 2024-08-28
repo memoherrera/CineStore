@@ -104,9 +104,10 @@ struct MovieDetailScreen: View {
                             backdrop(content: content)
                             info(content: content)
                         }
-                    } else {
-                        VStack {}
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    } else if (output.hasError) {
+                        NoContentView {
+                            loadTrigger.send(true)
+                        }
                     }
                 }
             }

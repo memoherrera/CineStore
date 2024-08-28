@@ -27,6 +27,7 @@ class MovieDetailViewModel: ViewModelProtocol {
         @Published var isLoading = false
         @Published var isReloading = false
         @Published var contentDetail: ContentDetail?
+        @Published var hasError = false
     }
 
     func transform(_ input: Input, cancelBag: CancelBag) -> Output {
@@ -61,9 +62,17 @@ class MovieDetailViewModel: ViewModelProtocol {
             .receive(on: RunLoop.main)
             .unwrap()
             .sink(receiveValue: { error in
+                output.hasError = true
                 self.navigator.showError(message: error.localizedDescription)
             })
             .cancel(with: cancelBag)
+                    
+        output.$contentDetail
+                .compactMap { $0 }
+                .sink { _ in
+                    output.hasError = false
+                }
+                .cancel(with: cancelBag)
 
         return output
     }
