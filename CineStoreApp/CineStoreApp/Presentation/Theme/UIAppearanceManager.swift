@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import Then
 
+/// Change at global level the appareance of the application
 struct UIAppearanceManager {
     static func configure(navigationBar: UINavigationBar = UINavigationBar.appearance(), tabBar: UITabBar = UITabBar.appearance()) {
             configureNavigationBar(navigationBar: navigationBar)

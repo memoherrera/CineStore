@@ -8,6 +8,7 @@
 import Combine
 import Foundation
 
+/// In order to create binding between outputs and obvsered published properties
 public typealias NeverFailingPublisher<T> = AnyPublisher<T, Never>
 public typealias NeverFailingPassthroughSubject<T> = PassthroughSubject<T, Never>
 public typealias NeverFailingCurrentValueSubject<T> = CurrentValueSubject<T, Never>

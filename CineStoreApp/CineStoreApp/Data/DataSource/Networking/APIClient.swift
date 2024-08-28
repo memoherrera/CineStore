@@ -8,6 +8,7 @@
 import Foundation
 import Alamofire
 
+/// General API Client
 class APIClient {
     static let shared = APIClient()
     

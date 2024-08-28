@@ -9,8 +9,11 @@ iOS Application using The Movie DB API to populate content
 ## Arquitecture
 
 - **Clean Arquitecture**
+    A design approach that emphasizes separation of concerns, making your codebase easier to maintain, test, and scale.
 - **SOLID principles**
+    A set of five guidelines that help you write more understandable, flexible, and maintainable code by promoting good object-oriented design.
 - **MVVM**
+    A design pattern that separates the UI logic from the business logic, making your code more modular and testable, especially in UI-centric applications.
 
 ## Stack
 - **Swift**
@@ -34,13 +37,18 @@ iOS Application using The Movie DB API to populate content
     ```bash
     open CineStoreApp.xcodeproj
     ```
+4. **API Secret**:
     
-3. **Build and Run**:
-
-    Build and run the project in Xcode.
+    Go to target Build Settings > User Defined > SECRET_KEY and paste the value provided by the Author 
+    
+4. **Build and Run**:
+    
+    Build and run the project in Xcode. 
 
 ## Project Folder Organization
 
+  **Main Folders**:
+    
 - **Presentation**: Views, navigation, view-models.
 - **Domain**: Use cases (Business logic).
 - **Data**: Repos and Data Sources
@@ -48,5 +56,9 @@ iOS Application using The Movie DB API to populate content
 
 ## Third Party Packages
 
-1. [LinkNavigator](https://github.com/interactord/LinkNavigator.git): discconect navigation logic form the view 
+1. [Alamofire](https://alamofire.github.io/Alamofire): Networking
+2. [CCommonCrypto](https://github.com/jernejstrasner/CCommonCrypto.git): Added security to private values
+3. [Factory](https://github.com/hmlongco/Factory): discconect navigation logic form the view 
 4. [Kingfisher](https://github.com/onevcat/Kingfisher.git): remote images
+5. [LinkNavigator](https://github.com/interactord/LinkNavigator.git): discconect navigation logic form the view 
+6. [Then](https://github.com/devxoul/Then): Utility

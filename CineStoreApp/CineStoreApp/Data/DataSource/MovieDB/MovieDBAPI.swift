@@ -7,6 +7,7 @@
 import Foundation
 import Alamofire
 
+/// Movie DB API. Establis supported network request in use
 class MovieDBAPI: MovieDBAPIProtocol {
     private let client: APIClient
         

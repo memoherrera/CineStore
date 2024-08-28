@@ -8,6 +8,8 @@
 import Foundation
 
 public extension Date {
+    
+    /// API Date Filtered required format
     func toFormattedString() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
