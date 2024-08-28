@@ -58,7 +58,8 @@ class TopRatedMoviesViewModel: ViewModelProtocol {
             .cancel(with: cancelBag)
         
         Just(true).map { _ in
-            self.movieUseCase.getTopRatedMovies(page: 1)
+            output.isLoading = true
+            return self.movieUseCase.getTopRatedMovies(page: 1)
                 .trackActivity(activityTracker)
                 .trackError(errorTracker)
                 .asNeverFailing()

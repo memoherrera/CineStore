@@ -48,23 +48,24 @@ class NowPlayingMoviesViewModel: ViewModelProtocol {
         
         // Load
         Just(true).map { _ in
-                let now = Date().toFormattedString()
-                return self.movieUseCase.getNowPlayingMovies(minDate: now, maxDate: now, page: 1)
-                    .trackError(errorTracker)
-                    .trackActivity(activityTracker)
-                    .asNeverFailing()
-            }
-            .switchToLatest()
-            .map { movieResponse in
-                self.totalPages = movieResponse.totalPages
-                let listItems = movieResponse.results.map { $0.toListItem() }
-                var page = Page()
-                page.items = listItems
-                page.currentPage = 1
-                return page
-            }
-            .assign(to: \.data, on: output)
-            .cancel(with: cancelBag)
+            output.isLoading = true
+            let now = Date().toFormattedString()
+            return self.movieUseCase.getNowPlayingMovies(minDate: now, maxDate: now, page: 1)
+                .trackError(errorTracker)
+                .trackActivity(activityTracker)
+                .asNeverFailing()
+        }
+        .switchToLatest()
+        .map { movieResponse in
+            self.totalPages = movieResponse.totalPages
+            let listItems = movieResponse.results.map { $0.toListItem() }
+            var page = Page()
+            page.items = listItems
+            page.currentPage = 1
+            return page
+        }
+        .assign(to: \.data, on: output)
+        .cancel(with: cancelBag)
         
         // Reload
        input.loadTrigger
