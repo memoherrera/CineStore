@@ -41,12 +41,41 @@ class TopRatedMoviesViewModel: ViewModelProtocol {
     }
     
     func transform(_ input: Input, cancelBag: CancelBag) -> Output {
-        
         let errorTracker = ErrorTracker()
         let activityTracker = ActivityTracker()
         let reloadActivityTracker = ActivityTracker()
         let output = Output()
-        
+
+        setupLoadingIndicators(output: output, activityTracker: activityTracker, reloadActivityTracker: reloadActivityTracker, cancelBag: cancelBag)
+        setupErrorHandling(errorTracker: errorTracker, cancelBag: cancelBag)
+
+        // Initial Load
+        performLoad(isReload: false, output: output, activityTracker: activityTracker, errorTracker: errorTracker, cancelBag: cancelBag)
+
+        // Load on Trigger
+        input.loadTrigger
+            .sink { isReload in
+                self.performLoad(isReload: isReload, output: output, activityTracker: isReload ? reloadActivityTracker : activityTracker, errorTracker: errorTracker, cancelBag: cancelBag)
+            }
+            .cancel(with: cancelBag)
+
+        // Load Next Page
+        input.loadNextPageTrigger
+            .filter { _ in !self.isLoadingPage && self.currentPage < self.totalPages }
+            .sink { _ in
+                self.performLoadNextPage(output: output, activityTracker: activityTracker, errorTracker: errorTracker, cancelBag: cancelBag)
+            }
+            .cancel(with: cancelBag)
+
+        // Navigation
+        input.toDetailTrigger
+            .sink(receiveValue: navigator.toMovieDetail(id:))
+            .cancel(with: cancelBag)
+
+        return output
+    }
+    
+    private func setupLoadingIndicators(output: Output, activityTracker: ActivityTracker, reloadActivityTracker: ActivityTracker, cancelBag: CancelBag) {
         activityTracker.isLoading
             .receive(on: RunLoop.main)
             .assign(to: \.isLoading, on: output)
@@ -56,67 +85,9 @@ class TopRatedMoviesViewModel: ViewModelProtocol {
             .receive(on: RunLoop.main)
             .assign(to: \.isReloading, on: output)
             .cancel(with: cancelBag)
-        
-        Just(true).map { _ in
-            output.isLoading = true
-            return self.movieUseCase.getTopRatedMovies(page: 1)
-                .trackActivity(activityTracker)
-                .trackError(errorTracker)
-                .asNeverFailing()
-        }
-        .switchToLatest()
-        .map { movieResponse in
-            self.totalPages = movieResponse.totalPages
-            let listItems = movieResponse.results.map { $0.toListItem() }
-            var page = Page()
-            page.items = listItems
-            page.currentPage = 1
-            return page
-        }
-        .assign(to: \.data, on: output)
-        .cancel(with: cancelBag)
+    }
 
-
-        input.loadTrigger
-            .map { isReload in
-                self.movieUseCase.getTopRatedMovies(page: 1)
-                    .trackActivity(isReload ? reloadActivityTracker : activityTracker)
-                    .trackError(errorTracker)
-                    .asNeverFailing()
-            }
-            .switchToLatest()
-            .map { movieResponse in
-                self.totalPages = movieResponse.totalPages
-                let listItems = movieResponse.results.map { $0.toListItem() }
-                var page = Page()
-                page.items = listItems
-                page.currentPage = 1
-                return page
-            }
-            .assign(to: \.data, on: output)
-            .cancel(with: cancelBag)
-        
-        input.loadNextPageTrigger
-            .filter { _ in !self.isLoadingPage && self.currentPage < self.totalPages }
-            .map { _ in
-                self.isLoadingPage = true
-                self.currentPage += 1
-                return self.movieUseCase.getTopRatedMovies(page: self.currentPage)
-                    .trackActivity(activityTracker)
-                    .trackError(errorTracker)
-                    .asNeverFailing()
-            }
-            .switchToLatest()
-            .map { movieResponse in
-                self.isLoadingPage = false
-                var currentItems = output.data.items
-                let listItems = movieResponse.results.map { $0.toListItem() }
-                currentItems.append(contentsOf: listItems)
-                return Page(items: currentItems, currentPage: self.currentPage, totalPages: self.totalPages)
-            }
-            .assign(to: \.data, on: output)
-            .cancel(with: cancelBag)
-
+    private func setupErrorHandling(errorTracker: ErrorTracker, cancelBag: CancelBag) {
         errorTracker
             .receive(on: RunLoop.main)
             .unwrap()
@@ -124,12 +95,41 @@ class TopRatedMoviesViewModel: ViewModelProtocol {
                 self.navigator.showError(message: error.localizedDescription)
             })
             .cancel(with: cancelBag)
-        
-        input.toDetailTrigger
-            .sink(receiveValue: navigator.toMovieDetail(id:))
-            .cancel(with: cancelBag)
-
-        return output
     }
 
+    private func performLoad(isReload: Bool, output: Output, activityTracker: ActivityTracker, errorTracker: ErrorTracker, cancelBag: CancelBag) {
+        movieUseCase.getTopRatedMovies(page: 1)
+            .trackActivity(activityTracker)
+            .trackError(errorTracker)
+            .asNeverFailing()
+            .map { movieResponse in
+                self.currentPage = 1
+                self.totalPages = movieResponse.totalPages
+                let listItems = movieResponse.results.map { $0.toListItem() }
+                return Page(items: listItems, currentPage: self.currentPage, totalPages: self.totalPages)
+            }
+            .receive(on: RunLoop.main)
+            .assign(to: \.data, on: output)
+            .cancel(with: cancelBag)
+    }
+
+    private func performLoadNextPage(output: Output, activityTracker: ActivityTracker, errorTracker: ErrorTracker, cancelBag: CancelBag) {
+        isLoadingPage = true
+        currentPage += 1
+        movieUseCase.getTopRatedMovies(page: currentPage)
+            .trackActivity(activityTracker)
+            .trackError(errorTracker)
+            .asNeverFailing()
+            .map { movieResponse in
+                self.isLoadingPage = false
+                self.totalPages = movieResponse.totalPages
+                var currentItems = output.data.items
+                let listItems = movieResponse.results.map { $0.toListItem() }
+                currentItems.append(contentsOf: listItems)
+                return Page(items: currentItems, currentPage: self.currentPage, totalPages: self.totalPages)
+            }
+            .receive(on: RunLoop.main)
+            .assign(to: \.data, on: output)
+            .cancel(with: cancelBag)
+    }
 }
