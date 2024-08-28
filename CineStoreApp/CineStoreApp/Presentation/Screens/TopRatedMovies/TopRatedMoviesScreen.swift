@@ -10,6 +10,7 @@ import SwiftUI
 struct TopRatedMoviesScreen: View {
     @State var isLoading: Bool = false
     @State var scrollPosition: Int? = nil
+    @State private var isGridLayout: Bool = false
     var input: TopRatedMoviesViewModel.Input
     @ObservedObject var output: TopRatedMoviesViewModel.Output
     
@@ -18,14 +19,24 @@ struct TopRatedMoviesScreen: View {
     private let loadTrigger = NeverFailingPassthroughSubject<Bool>()
     private var loadNextPageTrigger = NeverFailingPassthroughSubject<Bool>()
     
+    var toggleButton: some View {
+        Button(action: {
+            isGridLayout.toggle()
+        }) {
+            Image(systemName: isGridLayout ? "list.bullet" : "square.grid.2x2" )
+                .font(.title2)
+        }
+    }
+    
+    
     @ViewBuilder
-    func topRatedMovies() -> some View {
+    func listLayout() -> some View {
         LazyVStack {
             ForEach(output.data.items) { listItem in
                 Button {
                     toDetailTrigger.send(listItem.id)
                 } label: {
-                    VerticalImageCard(listItem: listItem)
+                    VerticalImageCard(listItem: listItem, showDetails: true)
                 }
                 .tint(.black)
             }
@@ -43,10 +54,49 @@ struct TopRatedMoviesScreen: View {
             }
         }.scrollTargetLayout()
     }
+    
+    @ViewBuilder
+    func gridLayout() -> some View {
+        LazyVStack {
+            ForEach(0..<output.data.items.count, id: \.self) { index in
+                if index % 2 == 0 {
+                    HStack(spacing: 24) {
+                        // First item
+                        Button {
+                            toDetailTrigger.send(output.data.items[index].id)
+                        } label: {
+                            VerticalImageCard(listItem: output.data.items[index], showDetails: false)
+                        }
+                        .padding(.leading, 44)
+                        .tint(.black)
+
+                        // Second item (if exists)
+                        if index + 1 < output.data.items.count {
+                            Button {
+                                toDetailTrigger.send(output.data.items[index + 1].id)
+                            } label: {
+                                VerticalImageCard(listItem: output.data.items[index + 1], showDetails: false)
+                            }
+                            .tint(.black)
+                        } else {
+                            // Spacer to keep the alignment
+                            Spacer()
+                        }
+                    }
+                }
+            }
+        }
+        .scrollTargetLayout()
+    }
+    
     var body: some View {
         BaseContentView(isLoading: $isLoading, title: "Top Rated") {
             ScrollView(showsIndicators: false) {
-                topRatedMovies()
+                if isGridLayout {
+                    gridLayout().frame(alignment: .center)
+                } else {
+                    listLayout()
+                }
             }
             .padding(16)
             .refreshable {
@@ -56,9 +106,16 @@ struct TopRatedMoviesScreen: View {
             .scrollBounceBehavior(.basedOnSize)
             .scrollPosition(id: $scrollPosition, anchor: .center)
             .contentMargins(.bottom, 120, for: .scrollContent)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    toggleButton  // Toolbar button to toggle layout
+                }
+            }
+
         }.onChange(of: scrollPosition) {
             let lastElementId = output.data.items.last?.id
-            if (lastElementId == scrollPosition) {
+            let indexToTriggerNextPage = output.data.items.endIndex - 4 // prev last row
+            if (scrollPosition == lastElementId || scrollPosition == indexToTriggerNextPage) {
                 loadNextPageTrigger.send(true)
             }
         }

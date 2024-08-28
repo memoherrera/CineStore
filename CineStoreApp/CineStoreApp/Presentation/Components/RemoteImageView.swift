@@ -13,6 +13,7 @@ import Kingfisher
 struct RemoteImageView: View {
     let imageUrl: String
     let imageSize: CGSize
+    let cornerRadius: CGFloat
     
     @State private var isLoading = true
     @State private var imageLoadFailed = false
@@ -51,7 +52,7 @@ struct RemoteImageView: View {
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(width: imageSize.width, height: imageSize.height)
-                .cornerRadius(10)
+                .cornerRadius(cornerRadius)
             
             if imageLoadFailed {
                 FailedMediaView(imageSize: self.imageSize)

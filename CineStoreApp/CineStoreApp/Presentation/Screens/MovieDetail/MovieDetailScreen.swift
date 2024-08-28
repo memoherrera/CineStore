@@ -18,12 +18,11 @@ struct MovieDetailScreen: View {
     @ViewBuilder
     func backdrop(content: ContentDetail) -> some View {
         ZStack(alignment: .bottom) {
-            if let url = URL(string: content.imageBackdropUrl) {
+            if let _ = URL(string: content.imageBackdropUrl) {
                 VStack(alignment: .leading) {
-                    KFImage(url)
-                        .resizable()
+                    RemoteImageView(imageUrl: content.imageBackdropUrl,
+                                    imageSize: CGSize(width: UIScreen.main.bounds.width, height: 210), cornerRadius: 0)
                         .aspectRatio(contentMode: .fill)
-                        .frame(height: 210)
                         .frame(maxWidth: .infinity)
 
                     Spacer()
@@ -67,9 +66,9 @@ struct MovieDetailScreen: View {
                         .foregroundStyle(Color(UIColor.labelSecondary))
                 }
                 HStack(alignment: .bottom) {
-                    RemoteImageView(imageUrl: content.imagePosterUrl, imageSize: CGSize(width: 90, height: 120))
+                    RemoteImageView(imageUrl: content.imagePosterUrl, 
+                                    imageSize: CGSize(width: 90, height: 120), cornerRadius: 8)
                         .aspectRatio(contentMode: .fill)
-                        .cornerRadius(8)
                 }
             }
             .padding(.horizontal, 16)
