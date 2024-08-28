@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		295C59202C7E9F7E00DC2F2B /* NoContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295C591F2C7E9F7E00DC2F2B /* NoContentView.swift */; };
+		295C59222C7EB5B200DC2F2B /* BundleUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295C59212C7EB5B200DC2F2B /* BundleUtil.swift */; };
 		29B4CBBC2C7A4B7A00C22C1E /* CineStoreApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4CBBB2C7A4B7A00C22C1E /* CineStoreApp.swift */; };
 		29B4CBC22C7A4B7B00C22C1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29B4CBC12C7A4B7B00C22C1E /* Assets.xcassets */; };
 		29B4CBC52C7A4B7B00C22C1E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29B4CBC42C7A4B7B00C22C1E /* Preview Assets.xcassets */; };
@@ -110,6 +111,7 @@
 /* Begin PBXFileReference section */
 		295C591E2C7E941100DC2F2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		295C591F2C7E9F7E00DC2F2B /* NoContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoContentView.swift; sourceTree = "<group>"; };
+		295C59212C7EB5B200DC2F2B /* BundleUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleUtil.swift; sourceTree = "<group>"; };
 		29B4CBB82C7A4B7A00C22C1E /* CineStoreApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CineStoreApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29B4CBBB2C7A4B7A00C22C1E /* CineStoreApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CineStoreApp.swift; sourceTree = "<group>"; };
 		29B4CBC12C7A4B7B00C22C1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -537,6 +539,7 @@
 				29B4CC722C7C5DF100C22C1E /* CancelBag.swift */,
 				29B4CC762C7C62C500C22C1E /* ActivityTracker.swift */,
 				29B4CC782C7C643500C22C1E /* Unwrap.swift */,
+				295C59212C7EB5B200DC2F2B /* BundleUtil.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -767,6 +770,7 @@
 				29B4CC0B2C7A6C8800C22C1E /* FavoriteMoviesScreen.swift in Sources */,
 				29B4CC552C7C21B700C22C1E /* UseCase+DI.swift in Sources */,
 				29B4CC752C7C5FB700C22C1E /* ListItemProtocol.swift in Sources */,
+				295C59222C7EB5B200DC2F2B /* BundleUtil.swift in Sources */,
 				29B4CC302C7BA10200C22C1E /* APIClient.swift in Sources */,
 				29B4CBFE2C7A5E2E00C22C1E /* MainRouteBuilders.swift in Sources */,
 				29B4CCA92C7D296900C22C1E /* MovieListNavigator.swift in Sources */,
@@ -859,6 +863,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				API_KEY = 9bb99f7357dc8b3e3730dee5741dab4f;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -922,6 +927,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				API_KEY = 9bb99f7357dc8b3e3730dee5741dab4f;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
