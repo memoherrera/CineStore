@@ -27,10 +27,12 @@ struct MainRouteView: View {
             tag: TabBarItemType.nowPlaying.rawValue,
             tabItem: TabBarItemType.nowPlaying.tabbarItem,
             linkItem: .init(path: AppRoutes.nowPlaying.rawValue)),
-        .init(
+        /* TODO: To be Added later
+            .init(
             tag: TabBarItemType.favorites.rawValue,
             tabItem: TabBarItemType.favorites.tabbarItem,
             linkItem: .init(path: AppRoutes.favorites.rawValue))
+         */
     ]
 
     @ViewBuilder

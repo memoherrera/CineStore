@@ -19,7 +19,7 @@ struct MainRouteGroup<RootNavigator: MainRootNavigatorType> {
         [
             TopRatedScreenBuilder.generate(),
             NowPlayingScreenBuilder.generate(),
-            FavoritesScreenBuilder.generate(),
+            // TODO: FavoritesScreenBuilder.generate(),
             DetailRouteBuilder.generate()
         ]
     }
