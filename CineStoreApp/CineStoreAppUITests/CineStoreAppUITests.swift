@@ -9,24 +9,37 @@ import XCTest
 
 final class CineStoreAppUITests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    var app: XCUIApplication!
 
-        // In UI tests it is usually best to stop immediately when a failure occurs.
+    override func setUpWithError() throws {
+        // In UI tests, it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
 
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+        // UI tests must launch the application that they test.
+        app = XCUIApplication()
+        app.launch()
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        // Clean up
+        app = nil
     }
 
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
-        app.launch()
+    func testTopRatedMoviesScreenLoading() throws {
+        // Given
+        let topRatedMoviesTitle = "Top Rated"
 
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        // Verify that the Top Rated screen is displayed
+        XCTAssertTrue(app.staticTexts[topRatedMoviesTitle].exists, "The Top Rated Movies title is not visible")
+
+        // Pull to refresh
+        let scrollView = app.scrollViews.firstMatch
+        scrollView.swipeDown()
+        XCTAssertTrue(app.activityIndicators.firstMatch.exists, "The activity indicator should appear when loading")
+
+        // Wait for data to loads
+        let firstMovie = app.buttons.firstMatch
+        XCTAssertTrue(firstMovie.waitForExistence(timeout: 5), "The first movie should be displayed after loading")
+
     }
 }

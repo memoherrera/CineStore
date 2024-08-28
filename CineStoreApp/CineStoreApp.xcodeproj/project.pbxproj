@@ -15,7 +15,6 @@
 		29B4CBC22C7A4B7B00C22C1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29B4CBC12C7A4B7B00C22C1E /* Assets.xcassets */; };
 		29B4CBC52C7A4B7B00C22C1E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29B4CBC42C7A4B7B00C22C1E /* Preview Assets.xcassets */; };
 		29B4CBD92C7A4B7B00C22C1E /* CineStoreAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4CBD82C7A4B7B00C22C1E /* CineStoreAppUITests.swift */; };
-		29B4CBDB2C7A4B7B00C22C1E /* CineStoreAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4CBDA2C7A4B7B00C22C1E /* CineStoreAppUITestsLaunchTests.swift */; };
 		29B4CBE92C7A52E300C22C1E /* LinkNavigator in Frameworks */ = {isa = PBXBuildFile; productRef = 29B4CBE82C7A52E300C22C1E /* LinkNavigator */; };
 		29B4CBF02C7A5B5B00C22C1E /* MainScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4CBEF2C7A5B5B00C22C1E /* MainScene.swift */; };
 		29B4CBF42C7A5C0200C22C1E /* MainRouteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4CBF32C7A5C0200C22C1E /* MainRouteView.swift */; };
@@ -123,7 +122,6 @@
 		29B4CBCA2C7A4B7B00C22C1E /* CineStoreAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CineStoreAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		29B4CBD42C7A4B7B00C22C1E /* CineStoreAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CineStoreAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		29B4CBD82C7A4B7B00C22C1E /* CineStoreAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CineStoreAppUITests.swift; sourceTree = "<group>"; };
-		29B4CBDA2C7A4B7B00C22C1E /* CineStoreAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CineStoreAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		29B4CBEF2C7A5B5B00C22C1E /* MainScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScene.swift; sourceTree = "<group>"; };
 		29B4CBF32C7A5C0200C22C1E /* MainRouteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouteView.swift; sourceTree = "<group>"; };
 		29B4CBF62C7A5C7100C22C1E /* NavigatorDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatorDependency.swift; sourceTree = "<group>"; };
@@ -297,7 +295,6 @@
 			isa = PBXGroup;
 			children = (
 				29B4CBD82C7A4B7B00C22C1E /* CineStoreAppUITests.swift */,
-				29B4CBDA2C7A4B7B00C22C1E /* CineStoreAppUITestsLaunchTests.swift */,
 			);
 			path = CineStoreAppUITests;
 			sourceTree = "<group>";
@@ -856,7 +853,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				29B4CBD92C7A4B7B00C22C1E /* CineStoreAppUITests.swift in Sources */,
-				29B4CBDB2C7A4B7B00C22C1E /* CineStoreAppUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
