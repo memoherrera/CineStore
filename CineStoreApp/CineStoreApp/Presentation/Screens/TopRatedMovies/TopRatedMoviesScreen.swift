@@ -36,6 +36,11 @@ struct TopRatedMoviesScreen: View {
                     .frame(maxWidth: .infinity)
                     .padding()
             }
+            if (!output.isLoading && output.data.items.count == 0) {
+                NoContentView {
+                    loadTrigger.send(true)
+                }
+            }
         }.scrollTargetLayout()
     }
     var body: some View {

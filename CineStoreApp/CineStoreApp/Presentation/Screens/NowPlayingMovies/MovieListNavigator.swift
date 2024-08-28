@@ -13,7 +13,8 @@ struct MovieListNavigator: MovieListNavigatorProtocol {
 
     func showError(message: String) {
         let action = ActionButton(title: "OK", style: .cancel)
-        let alert = Alert(message: message, buttons: [action], flagType: .error)
+        print(message)
+        let alert = Alert(message: "An error happens trying to fetch the contet feed. Please try again", buttons: [action], flagType: .error)
         navigation.alert(model: alert)
     }
 
