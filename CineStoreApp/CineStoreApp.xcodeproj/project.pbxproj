@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		295C59202C7E9F7E00DC2F2B /* NoContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295C591F2C7E9F7E00DC2F2B /* NoContentView.swift */; };
 		295C59222C7EB5B200DC2F2B /* BundleUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295C59212C7EB5B200DC2F2B /* BundleUtil.swift */; };
+		295C59252C7EB94C00DC2F2B /* CryptoUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295C59242C7EB94C00DC2F2B /* CryptoUtil.swift */; };
+		295C59282C7EBDA100DC2F2B /* CryptoUtilTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295C59272C7EBDA100DC2F2B /* CryptoUtilTests.swift */; };
 		29B4CBBC2C7A4B7A00C22C1E /* CineStoreApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B4CBBB2C7A4B7A00C22C1E /* CineStoreApp.swift */; };
 		29B4CBC22C7A4B7B00C22C1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29B4CBC12C7A4B7B00C22C1E /* Assets.xcassets */; };
 		29B4CBC52C7A4B7B00C22C1E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29B4CBC42C7A4B7B00C22C1E /* Preview Assets.xcassets */; };
@@ -112,6 +114,8 @@
 		295C591E2C7E941100DC2F2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		295C591F2C7E9F7E00DC2F2B /* NoContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoContentView.swift; sourceTree = "<group>"; };
 		295C59212C7EB5B200DC2F2B /* BundleUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleUtil.swift; sourceTree = "<group>"; };
+		295C59242C7EB94C00DC2F2B /* CryptoUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoUtil.swift; sourceTree = "<group>"; };
+		295C59272C7EBDA100DC2F2B /* CryptoUtilTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoUtilTests.swift; sourceTree = "<group>"; };
 		29B4CBB82C7A4B7A00C22C1E /* CineStoreApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CineStoreApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29B4CBBB2C7A4B7A00C22C1E /* CineStoreApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CineStoreApp.swift; sourceTree = "<group>"; };
 		29B4CBC12C7A4B7B00C22C1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -222,6 +226,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		295C59262C7EBD8F00DC2F2B /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				295C59272C7EBDA100DC2F2B /* CryptoUtilTests.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		29B4CBAF2C7A4B7A00C22C1E = {
 			isa = PBXGroup;
 			children = (
@@ -398,6 +410,7 @@
 		29B4CC1A2C7AA35100C22C1E /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				295C59262C7EBD8F00DC2F2B /* Utils */,
 				29B4CC8B2C7CDB7A00C22C1E /* Extensions */,
 				29B4CC1D2C7AA5F000C22C1E /* AppearanceManager */,
 			);
@@ -540,6 +553,7 @@
 				29B4CC762C7C62C500C22C1E /* ActivityTracker.swift */,
 				29B4CC782C7C643500C22C1E /* Unwrap.swift */,
 				295C59212C7EB5B200DC2F2B /* BundleUtil.swift */,
+				295C59242C7EB94C00DC2F2B /* CryptoUtil.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -708,6 +722,7 @@
 				29B4CC372C7BAC0D00C22C1E /* XCRemoteSwiftPackageReference "Alamofire" */,
 				29B4CC482C7C1D8400C22C1E /* XCRemoteSwiftPackageReference "Factory" */,
 				29B4CC812C7C722200C22C1E /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				295C59232C7EB90100DC2F2B /* XCRemoteSwiftPackageReference "CCommonCrypto" */,
 			);
 			productRefGroup = 29B4CBB92C7A4B7A00C22C1E /* Products */;
 			projectDirPath = "";
@@ -807,6 +822,7 @@
 				29B4CC902C7CE55F00C22C1E /* NowPlayingMoviesViewModel.swift in Sources */,
 				29B4CC0E2C7A925600C22C1E /* UIAppearanceManager.swift in Sources */,
 				29B4CC232C7B90B500C22C1E /* Movie.swift in Sources */,
+				295C59252C7EB94C00DC2F2B /* CryptoUtil.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -828,6 +844,7 @@
 				29B4CC7B2C7C680C00C22C1E /* MockMovieUseCase.swift in Sources */,
 				29B4CC8D2C7CDB9D00C22C1E /* StringExtensionTests.swift in Sources */,
 				29B4CCB62C7DA51000C22C1E /* MovieDetailViewModelTests.swift in Sources */,
+				295C59282C7EBDA100DC2F2B /* CryptoUtilTests.swift in Sources */,
 				29B4CC1F2C7AA60A00C22C1E /* NavigationComponentMock.swift in Sources */,
 				29B4CC632C7C58FF00C22C1E /* MockMovieRepository.swift in Sources */,
 				29B4CC362C7BA88800C22C1E /* APIClientTests.swift in Sources */,
@@ -983,6 +1000,7 @@
 		29B4CBDF2C7A4B7C00C22C1E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				API_KEY = "1fDF5UKPDwiOTeKfvTntRxkVuAUvBau+Eq3d7MhEIWsH0mj8KqWoQmeCXU2wIPR4";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -1003,6 +1021,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.memoherrera.CineStoreApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SECRET_KEY = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1012,6 +1031,7 @@
 		29B4CBE02C7A4B7C00C22C1E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				API_KEY = "1fDF5UKPDwiOTeKfvTntRxkVuAUvBau+Eq3d7MhEIWsH0mj8KqWoQmeCXU2wIPR4";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -1032,6 +1052,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.memoherrera.CineStoreApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SECRET_KEY = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1156,6 +1177,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		295C59232C7EB90100DC2F2B /* XCRemoteSwiftPackageReference "CCommonCrypto" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jernejstrasner/CCommonCrypto.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
 		29B4CBE72C7A52E300C22C1E /* XCRemoteSwiftPackageReference "LinkNavigator" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/interactord/LinkNavigator.git";

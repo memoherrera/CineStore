@@ -9,5 +9,7 @@
 		<key>UIImageName</key>
 		<string>splash</string>
 	</dict>
+	<key>SECRET_KEY</key>
+	<string>${SECRET_KEY}</string>
 </dict>
 </plist>

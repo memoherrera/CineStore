@@ -10,9 +10,12 @@ import Foundation
 enum GlobalConfig {
     enum MovieDB {
         
-        //TODO: Secure this
         static var apiKey: String {
             return BundleUtil.infoForKey("API_KEY")
+        }
+        
+        static var secretKey: String {
+            return BundleUtil.infoForKey("SECRET_KEY")
         }
         
         static var imageUrl: String {

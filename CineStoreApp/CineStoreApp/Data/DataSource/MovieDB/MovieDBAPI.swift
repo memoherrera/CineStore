@@ -14,11 +14,19 @@ class MovieDBAPI: MovieDBAPIProtocol {
         self.client = client
     }
     
+    private func decryptApiKey() -> String {
+        let secret = GlobalConfig.MovieDB.secretKey
+        let keyData = Array(secret.utf8)
+        let decryptedApiKey = CryptoUtil.decrypt(base64EncodedString: GlobalConfig.MovieDB.apiKey, keyData: keyData)
+        return decryptedApiKey ?? ""
+    }
+    
     // Helper method to construct the base URL for movie discovery
     private func constructMovieDiscoveryURL(page: Int, additionalParameters: [String: String]) -> String {
+        let decryptedApiKey = decryptApiKey()
         var components = URLComponents(string: "/discover/movie?")!
         components.queryItems = [
-            URLQueryItem(name: "api_key", value: GlobalConfig.MovieDB.apiKey),
+            URLQueryItem(name: "api_key", value: decryptedApiKey),
             URLQueryItem(name: "include_adult", value: "false"),
             URLQueryItem(name: "include_video", value: "false"),
             URLQueryItem(name: "language", value: "en-US"),
@@ -36,9 +44,10 @@ class MovieDBAPI: MovieDBAPIProtocol {
     
     // Helper method to construct the base URL for movie discovery
     private func constructMovieDedtailURL(movieID: Int, additionalParameters: [String: String]) -> String {
+        let decryptedApiKey = decryptApiKey()
         var components = URLComponents(string: "/movie/\(movieID)?")!
         components.queryItems = [
-            URLQueryItem(name: "api_key", value: GlobalConfig.MovieDB.apiKey),
+            URLQueryItem(name: "api_key", value: decryptedApiKey),
             URLQueryItem(name: "language", value: "en-US"),
         ]
         

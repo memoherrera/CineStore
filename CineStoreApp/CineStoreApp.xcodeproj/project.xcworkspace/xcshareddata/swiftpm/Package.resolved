@@ -1,5 +1,5 @@
 {
-  "originHash" : "b39a025f6e5cc0a14bf89abe78890e92674821ab719c2622dac7d22fd975f29a",
+  "originHash" : "f454edd735338b7d3dbdd14ebc214f1f5e7e87ce9da8df5c664b931cad048953",
   "pins" : [
     {
       "identity" : "alamofire",
@@ -8,6 +8,15 @@
       "state" : {
         "revision" : "f455c2975872ccd2d9c81594c658af65716e9b9a",
         "version" : "5.9.1"
+      }
+    },
+    {
+      "identity" : "ccommoncrypto",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/jernejstrasner/CCommonCrypto.git",
+      "state" : {
+        "revision" : "0530a4637e4a3728f6d5f23199a2f6e4f56c126d",
+        "version" : "1.1.0"
       }
     },
     {
